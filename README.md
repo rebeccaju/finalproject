@@ -26,18 +26,18 @@ OK, here we go.
 
 The goal of my project is to answer the questions...
 
-1. Does Symbiodinium community composition recapitulate host phylogeny in Scleractinian corals?
-  - Does the level of recapitulation depend on scale/subclade?
-  - Does the level of recapitulation depend on the population/biogeography?
+- Does Symbiodinium community composition recapitulate host phylogeny in Scleractinian corals?
+    - Does the level of recapitulation depend on scale/subclade?
+    - Does the level of recapitulation depend on the population/biogeography?
 
-2. If not, what factors explain the incongruences?
-  - How are associations between corals and algae formed?
-  - How plastic are such associations?
+- If not, what factors explain the incongruences?
+    - How are associations between corals and algae formed?
+    - How plastic are such associations?
 
-3. How can phylosymbiotic analyses inform related research?
-  - What can this phylogenetic analysis tell us about coral-algal plasticity and fitness?
+- How can phylosymbiotic analyses inform related research?
+    - What can this phylogenetic analysis tell us about coral-algal plasticity and fitness?
 
-4. Do the phylogenetic trees for Scleractinia and Symbiodinium show co-phylogeny?
+- Do the phylogenetic trees for Scleractinia and Symbiodinium show co-phylogeny?
 
 The methods I will use to do this are...
 
