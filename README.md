@@ -20,15 +20,38 @@ Some guidelines and tips:
 
 OK, here we go.
 
-# Title of my project
+# Phylosymbiosis of stony corals (Scleractinia) and their algal symbionts (Symbiodinium)
 
 ## Introduction and Goals
 
-The goal of my project is to answer the question, What is...?
+The goal of my project is to answer the questions...
+
+Does Symbiodinium community composition recapitulate host phylogeny in Scleractinian corals?
+  - Does the level of recapitulation depend on scale/subclade?
+  - Does the level of recapitulation depend on the population/biogeography?
+
+If not, what factors explain the incongruences?
+  - How are associations between corals and algae formed?
+  - How plastic are such associations?
+
+How can phylosymbiotic analyses inform related research?
+  - What can this phylogenetic analysis tell us about coral-algal plasticity and fitness?
+
+Do the phylogenetic trees for Scleractinia and Symbiodinium show co-phylogeny?
+
 
 The methods I will use to do this are...
 
+1. Conduct a literature review of existing research on coral-algal symbioses.
+2. Build independent phylogenetic trees for Scleractinia and Symbiodinium.
+3. Calculate metrics to describe Symbiodinium communities and map these metrics against the Scleractinia phylogeny.
+
 The data I will use are (my own data/ data publicly available at YYY/ simulations)
+
+Data publicly available through NCBI
+[Scleractinia](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Tree&id=6125&lvl=3&keep=1&srchmode=1&unlock)
+[Symbiodinium](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=2949&lvl=3&lin=f&keep=1&srchmode=1&unlock)
+
 
 ## Methods
 
@@ -47,4 +70,3 @@ The biggest difficulty in implementing these analyses was...
 If I did these analyses again, I would...
 
 ## References
-
