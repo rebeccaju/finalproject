@@ -1,0 +1,31 @@
+IQ-TREE multicore version 1.6.12 for Linux 64-bit built Aug 15 2019
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    c03n07.grace.hpc.yale.internal (AVX, 125 GB RAM)
+Command: iqtree -s por.16s.alignment.fasta -nt AUTO
+Seed:    469058 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sun Nov  1 16:06:05 2020
+Kernel:  AVX - auto-detect threads (20 CPU cores detected)
+
+Reading alignment file por.16s.alignment.fasta ... Fasta format detected
+ERROR: Sequence ref|NC_037434.1| contains not enough characters (572)
+ERROR: Sequence Porites_lobata_KU761954.1 contains not enough characters (572)
+ERROR: Sequence Porites_panamensis_KU761953.1 contains not enough characters (572)
+ERROR: Sequence Porites_sverdrupi_KU956960.1 contains not enough characters (572)
+ERROR: Sequence Porites_lobata_KU572435.1 contains not enough characters (572)
+ERROR: Sequence Porites_lutea_KU159432.1 contains not enough characters (572)
+ERROR: Sequence Porites_rus_LN864762.1 contains not enough characters (572)
+ERROR: Sequence Porites_panamensis_KJ546638.1 contains not enough characters (572)
+ERROR: Sequence Porites_okinawensis_JF825142.1 contains not enough characters (572)
+ERROR: Sequence ref|NC_037435.1| contains not enough characters (572)
+ERROR: Sequence Porites_porites_DQ643837.1 contains not enough characters (572)
+ERROR: Sequence Porites_sp_JQ347809.1 contains not enough characters (572)
+ERROR: Sequence Porites_sp_JQ347808.1 contains not enough characters (572)
+ERROR: Sequence Porites_sp_JQ347807.1 contains not enough characters (572)
+ERROR: Sequence Porites_sp_JQ347806.1 contains not enough characters (572)
+ERROR: Sequence Porites_sp_JQ347805.1 contains not enough characters (572)
+ERROR: Sequence Porites_sp_JQ347810.1 contains not enough characters (572)
+ERROR: Sequence Porites_compressa_L76020.1 contains not enough characters (572)
+ERROR: Sequence Porites_lobata_AF550372.1 contains not enough characters (572)
+ERROR: 

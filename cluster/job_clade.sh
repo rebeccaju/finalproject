@@ -8,4 +8,6 @@
 
 module load IQ-TREE/1.6.12
 
-iqtree -s por.alignment.fasta -nt AUTO
+iqtree -s por.18s.alignment.fasta -nt AUTO
+iqtree -s por.16s.alignment.fasta -nt AUTO
+iqtree -s por.co1.alignment.fasta -nt AUTO
