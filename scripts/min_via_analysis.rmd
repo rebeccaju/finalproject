@@ -1,0 +1,56 @@
+---
+title: "Minimum Viable Analysis"
+author: "R Ju"
+date: "10/22/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "~/Coursework/Phylogenetic Biology/finalproject/")
+library(tidyverse)
+```
+#Data collection
+
+To begin, I will compile a list of known Symbiodinium clade associations for species within the genus *Porites* from [coraltraits.org](coraltraits.org).
+
+```{r data clean}
+
+#load in coraltraits.org data and filter for relevant species and trait
+por_sym <- read.csv("data/ctdb_1.1.0_data.csv") %>%
+  filter(trait_name == "Symbiodinium clade" & str_detect(specie_name, "Porites")) %>%
+  select(specie_id, specie_name, location_id, location_name, trait_id, trait_name, methodology_id, methodology_name, value)
+
+#visualize data (Symbiodinium clades by species)
+ggplot(por_sym) +
+  geom_bar(aes(x = value, fill = value)) + 
+  facet_wrap(~specie_name) + 
+  labs(x = 'Symbiodinium clade',
+       y = 'Observations') +
+  theme_bw() + theme(panel.border = element_rect(color="black", fill=NA, size=0.75), panel.grid.major = element_blank(),
+                     panel.grid.minor = element_blank(), axis.line = element_blank()) 
+
+#visualize proportion data
+por_sym %>%
+  count(specie_name, value) %>%
+  group_by(specie_name) %>%
+  mutate(prop = prop.table(n)) %>%
+  ggplot() +
+  geom_col(aes(x = value, y = prop, fill = value)) + 
+  facet_wrap(~specie_name) + 
+  labs(x = 'Symbiodinium clade',
+       y = 'Proportion of observations') +
+  theme_bw() + theme(panel.border = element_rect(color="black", fill=NA, size=0.75), panel.grid.major = element_blank(),
+                     panel.grid.minor = element_blank(), axis.line = element_blank()) 
+```
+
+
+###Build phylogenetic tree for genus Porites
+
+Clade name: Porites
+
+Taxonomy id: 46719
+
+
+
+
