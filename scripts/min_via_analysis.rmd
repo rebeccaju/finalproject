@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = "/Users/rju/Coursework/Phylogenetic Biology/finalproject/")
 library(tidyverse)
 library(ape)
+library(ggtree)
 ```
 #Data collection
 
@@ -71,9 +72,14 @@ Bait sequence:
     CATACTGAAAGCTGTTCCTATCATACCGGCCCCAACACCAAATATTAGATATAATGTGCCAATATCTTTA
     TGATTTGTTGACCGTCGTTT
 
-```{r}
-por_phy1 <- read.tree("cluster/por.18s.alignment.fasta.treefile")
-plot(por_phy1)
+```{r, fig.height=12, fig.width=12}
+por_phy <- read.tree("cluster/por.co1.alignment.fasta.treefile")
+plot(por_phy)
+nodelabels(por_phy$node.label)
+
+por_phy_con <- read.tree("cluster/por.co1.alignment.fasta.contree")
+plot(por_phy_con)
+nodelabels(por_phy_con$node.label)
 ```
 
 
