@@ -49,14 +49,13 @@ por_sym %>%
 
 ###Build phylogenetic tree for genus Porites
 
-For this analysis, I will build a tree using just the 18S gene and the same outgroup species (Siderastrea siderea) as the Kitano et al. 20 paper. I will use the 
-
+For this analysis, I will build a tree using just the 18S gene and the same outgroup species (Siderastrea siderea) as the Kitano et al. 20 paper.
 
 Clade name: Porites (taxid: 46719)
 
 Outgroup: Siderastrea siderea (taxid: 130672)
 
-####Using CO1 gene
+####Using the CO1 gene
 
 Bait sequence:
     >HM754452.1 Palythoa cf. heliodiscus SMH-2011 isolate 305.11.2 cytochrome oxidase subunit I (CO1) gene, partial cds; mitochondrial
@@ -72,14 +71,26 @@ Bait sequence:
     CATACTGAAAGCTGTTCCTATCATACCGGCCCCAACACCAAATATTAGATATAATGTGCCAATATCTTTA
     TGATTTGTTGACCGTCGTTT
 
-```{r, fig.height=12, fig.width=12}
-por_phy <- read.tree("cluster/por.co1.alignment.fasta.treefile")
+```{r}
+por_phy <- read.tree("cluster/por.co1.alignment.fasta.treefile") 
+por_phy$tip.label <- por_phy$tip.label %>%
+  str_sub(end = sapply(str_locate_all(por_phy$tip.label,"_"), "[[", 2)-1) %>%
+  str_replace("_"," ")
+por_phy$tip.label[2] <- "Porites harrisoni"
+por_phy$tip.label[62] <- "Porites fontanesii"
+
+ggtree(por_phy) +
+  geom_tiplab(fontface = "italic", size = 1) 
+
+ggtree(por_phy, branch.length = "none") +
+  geom_tiplab(fontface = "italic", size = 1) + 
+  xlim(0,50)
+
+
 plot(por_phy)
 nodelabels(por_phy$node.label)
 
-por_phy_con <- read.tree("cluster/por.co1.alignment.fasta.contree")
-plot(por_phy_con)
-nodelabels(por_phy_con$node.label)
 ```
+
 
 
