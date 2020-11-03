@@ -3,8 +3,8 @@ title: "Minimum Viable Analysis"
 author: "R Ju"
 date: "10/22/2020"
 output:
-  html_document: default
   github_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
