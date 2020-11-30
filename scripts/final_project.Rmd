@@ -20,7 +20,7 @@ library(rnaturalearthdata)
 ```
 
 
-##Data collection
+## Data collection
 
 To begin, I will compile a list of known Symbiodinium clade associations for all Scleractinia species [coraltraits.org](coraltraits.org). Data downloaded from this site also includes the geographic location of the sample, as well as methodology used. These factors may be useful in comparative analyses.
 
@@ -31,14 +31,14 @@ syms <- read.csv("data/ctdb_1.1.0_data.csv") %>%
   select(specie_id, specie_name, location_id, location_name, trait_id, trait_name, methodology_id, methodology_name, value)
 
 #visualize data (Symbiodinium clades by species)
-# ggplot(syms) +
-#   geom_bar(aes(x = value, fill = value)) + 
-#   facet_wrap(~specie_name) + 
-#   labs(x = 'Symbiodinium clade',
-#        y = 'Observations') +
-#   scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
-#   theme_bw() + theme(panel.border = element_rect(color="black", fill=NA, size=0.75), panel.grid.major = element_blank(),
-#                      panel.grid.minor = element_blank(), axis.line = element_blank()) 
+ggplot(syms) +
+  geom_bar(aes(x = value, fill = value)) +
+  facet_wrap(~specie_name) +
+  labs(x = 'Symbiodinium clade',
+       y = 'Observations') +
+  scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
+  theme_bw() + theme(panel.border = element_rect(color="black", fill=NA, size=0.75), panel.grid.major = element_blank(),
+                     panel.grid.minor = element_blank(), axis.line = element_blank())
 ```
 
 Six different *Symbiodinium* clades are found within Scleractinia. However, we see that clade C is dominant across most species. Additionally, there is quite a bit of variation between the number of observations for each species. 
@@ -51,20 +51,24 @@ syms_prop <- syms %>%
   count(specie_name, value) %>%
   group_by(specie_name) %>%
   mutate(prop = prop.table(n)) #saves prop table of symbiodinium clade by species
-# syms_prop %>%
-#   ggplot(aes(x = "", y = prop, fill = value), size = 12) +
-#   geom_bar(stat = "identity", width = 0.5, color = "white") + 
-#   coord_polar("y", start=0) +
-#   scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
-#   facet_wrap(~specie_name) + 
-#   theme_void()
+syms_prop %>%
+  ggplot(aes(x = "", y = prop, fill = value), size = 12) +
+  geom_bar(stat = "identity", width = 0.5, color = "white") +
+  coord_polar("y", start=0) +
+  scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
+  facet_wrap(~specie_name) +
+  theme_void()
 
 ```
 
 
-##Phylogenetic inference
+Though this is more visually accessible, the issues with sample size/observation bias remain. Going forward, I will treat symbiont clade as a boolean variable (present, not present) rather than weighting by number/percentage of observations. This is a simpler approach, but may actually yield clearer results.
 
-For this analysis, I will build a tree using 
+
+
+## Phylogenetic inference
+
+For this analysis, I will build a tree using publicly available sequence data for scleractinian corals, specifically the mitochondrial genome.
 
 Clade name: Scleractinia (taxid: 6125)
 
@@ -86,7 +90,7 @@ write.dna(seqs, file = "cluster/final/alignment.cat.fasta", format = "fasta")
 ```
 
 
-Phylogeny was inferred using IQ-TREE and the cluster. Bootstrap analyses were conducted to determine support values for the resulting tree. BAYES?
+Phylogeny was inferred using IQ-TREE and the cluster. Bootstrap analyses were conducted to determine support values for the resulting tree. Additional Bayesian analyses may be conducted. 
 
 Job script:
 
@@ -100,8 +104,13 @@ Job script:
 
     module load IQ-TREE/1.6.12
 
-    iqtree -s alignment.cat.fasta -bb 1000 -nt AUTO
+    iqtree -s alignment.cat.fasta -bb 1000 -nt AUTOn
 
+
+The IQ-TREE composition chi-test fails for 101 species. This may be addressed by using fewer genes (just COI and CYTB, for example) which are more commonly available to reduce gaps. Troubleshooting of the actual inference may also yield more results.
+
+
+We can read in the treefile and look at the resulting phylogeny, complete with support values from the ML analysis. The log file indicates that the best fit model is GTR+F+I+G4, based on BIC. 
 
 ```{r, fig.height=30, fig.width=20}
 #read in cluster output
@@ -111,12 +120,19 @@ phy <- read.tree("cluster/final/alignment.cat.fasta.treefile")
 drops <- phy$tip.label[phy$tip.label %in% str_replace(syms_prop$specie_name, " ", "_") == FALSE]
 phy1 <- drop.tip(phy, drops)
 
-# #plot tree with support values
-# plot(phy1) #maybe plot with ggtree? figure is messy and hard to read
-# nodelabels(phy1$node.label)
+#plot tree with support values
+plot(phy1) #maybe plot with ggtree? figure is messy and hard to read
+nodelabels(phy1$node.label)
 ```
 
 
+This tree is roughly as expected, as species within the same genus are grouped in clades. As the current accepted classification of scleractinian corals is also based on mitochondrial sequence data, this is a good sign! If time allows, I'd love to compare this tree more closely with others in the literature.
+
+
+## Mapping symbiont clade data onto the phylogenetic tree
+
+
+Now that we have a tree, we can map our symbiont data onto the tips and look for any signs of trait conservation within clades. To make visualization easier, we can plot the tree as a cladogram (all total branch lengths are the same). Actually plotting the data can be difficult -- here, I've done it by melting the symbiont data and dodging points along the tips. 
 
 ```{r, fig.height = 40, fig.width=40}
 #create data set with symb clade and tip labels
@@ -138,9 +154,19 @@ ggtree(phy1, branch.length = "none", size = 1) %<+% symbs +
   geom_tippoint(aes(color=D), size = 8, position = position_dodge(width = 2.25)) +
   geom_tippoint(aes(color=C), size = 8, position = position_dodge(width = 3)) +
   scale_color_manual(breaks = c("C", "B", "A",  "D", "F"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink"), name = "Symbiodinium clade") + 
-  xlim(-2, 40) + 
+  xlim(-2, 40) +  
   theme(legend.position = "bottom")
 ```
+
+As clade C is almost ubiquitous, a first glance at this cladogram doesn't reveal that much in terms of phylogenetic conservation. However, it does seem that associations with less common clades, such as B or A, tend to be shared across sister tips (ex. Agaricia spp.). Interestingly, tips that diverged most recently seem to associate with fewer clades, suggesting that evolutionary time may be a factor. 
+
+
+## Geospatial distribution of symbiont clades
+
+
+I hypothesize that geospatial distribution may also correlate with symbiont clade associations. Of course, as species are not randomly distributed, phylogenetic relationships and location data are often inseparable. However, it is still interesting to visualize the distribution of symbiont clades.
+
+Here, I plot each symbiont clade observation onto a world map.
 
 ```{r geo, fig.width=20, fig.height = 20}
 #read in location data with lat and long
@@ -164,3 +190,9 @@ ggplot() +
   theme(panel.grid.major = element_line(color = gray(.5), linetype = "dashed", size = 0.5), panel.background = element_rect(fill = "aliceblue"))
 
 ```
+
+
+Clades C and D are well distributed, while clades A and B seem restricted to the Atlantic/Caribbean. Again, this doesn't tell us too much, as species distribution may also follow these patterns. Further analysis can be done by comparing symbiont and host ranges to tease out potential geographical influences.
+
+
+This analysis currently relies on data visualization to draw conclusions. Moving forward, I'd like to apply some statistical methods to quantify the relationships between location, phylogenetic relation, and symbiont clade association.
