@@ -1,0 +1,167 @@
+---
+title: "Final Project"
+author: "R Ju"
+date: "11/29/2020"
+output:
+  github_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
+knitr::opts_knit$set(root.dir = "/Users/rju/Coursework/Phylogenetic Biology/finalproject/")
+library(tidyverse)
+library(apex)
+library(ggtree)
+```
+
+##Data collection
+
+To begin, I will compile a list of known Symbiodinium clade associations for all Scleractinia species [coraltraits.org](coraltraits.org). Data downloaded from this site also includes the geographic location of the sample, as well as methodology used. These factors may be useful in comparative analyses.
+
+```{r data clean, fig.width=15, fig.height=15}
+#load in coraltraits.org data and filter for species with at least 10 observations
+syms <- read.csv("data/ctdb_1.1.0_data.csv") %>%
+  filter(trait_name == "Symbiodinium clade") %>%
+  select(specie_id, specie_name, location_id, location_name, trait_id, trait_name, methodology_id, methodology_name, value) %>%
+  group_by(specie_name) %>%
+  filter(n() >= 10)
+
+#visualize data (Symbiodinium clades by species)
+ggplot(syms) +
+  geom_bar(aes(x = value, fill = value)) + 
+  facet_wrap(~specie_name) + 
+  labs(x = 'Symbiodinium clade',
+       y = 'Observations') +
+  scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
+  theme_bw() + theme(panel.border = element_rect(color="black", fill=NA, size=0.75), panel.grid.major = element_blank(),
+                     panel.grid.minor = element_blank(), axis.line = element_blank()) 
+```
+
+Six different *Symbiodinium* clades are found within Scleractinia. However, we see that clade C is dominant across most species. Additionally, there is some variation between the number of observations for each species. 
+
+To better see the different *Symbiodinium* associations for each species, we can also plot pie graphs representing the proportion of the total number of observations attributed to each clade.
+
+```{r, fig.width=15, fig.height=15}
+#visualize proportion data
+syms_prop <- syms %>%
+  count(specie_name, value) %>%
+  group_by(specie_name) %>%
+  mutate(prop = prop.table(n)) #saves prop table of symbiodinium clade by species
+syms_prop %>%
+  ggplot(aes(x = "", y = prop, fill = value), size = 12) +
+  geom_bar(stat = "identity", width = 0.5, color = "white") + 
+  coord_polar("y", start=0) +
+  scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
+  facet_wrap(~specie_name) + 
+  theme_void()
+
+```
+
+
+##Phylogenetic inference
+
+For this analysis, I will build a tree using 
+
+Clade name: Scleractinia (taxid: 6125)
+
+
+Bait sequence: [Siderastrea radians mitochondrion, complete genome](https://www.ncbi.nlm.nih.gov/nuccore/DQ643838.1?report=fasta)
+
+
+Sequences were gathered and aligned with the NCBI blast tool. The headings of the downloaded sequences were modified using the following sed command:
+
+    sed -E 's/>[a-zA-Z]+\|([a-zA-Z_?0-9\.]+)\|.+\[organism=([a-zA-Z0-9]+)( [a-zA-Z0-9]+\. | )([a-zA-Z0-9]+).+?/>\2_\4/g' alignment.raw.fasta > alignment.fasta
+    
+
+Whole mitochondrial genome sequences were chosen when available. However, some species only have shorter mitochondrial sequences (12S, 16S, COI, CYTB, etc.). These sequences were aligned and concatenated using the 'apex' R package.
+
+```{r}
+rawseqs <- read.multiFASTA("cluster/final/alignment.fasta")[-1]
+seqs <- concatenate(rawseqs)
+write.dna(seqs, file = "cluster/final/alignment.cat.fasta", format = "fasta")
+```
+
+
+Phylogeny was inferred using IQ-TREE and the cluster. Bootstrap analyses were conducted to determine support values for the resulting tree. BAYES?
+
+Job script:
+
+    #!/bin/bash
+
+    #SBATCH --partition=eeb354
+    #SBATCH --job-name=scler_iqtree
+    #SBATCH --time=2:00:00
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=8
+
+    module load IQ-TREE/1.6.12
+
+    iqtree -s alignment.cat.fasta -bb 1000 -nt AUTO
+
+
+```{r, fig.height=20, fig.width=20}
+#read in cluster output
+phy <- read.tree("cluster/final/alignment.cat.fasta.treefile") 
+
+#plot tree with support values
+plot(phy) #maybe plot with ggtree? figure is messy and hard to read
+nodelabels(phy$node.label)
+```
+
+
+
+```{r, fig.height = 40, fig.width=40}
+#create data set with symb clade and tip labels
+tips <- data.frame(tip.label=phy$tip.label, specie_name=str_sub(phy$tip.label))
+
+symbs <- full_join(tips, syms_prop, by="specie_name") %>%
+  filter(is.na(value) == FALSE) %>%
+  group_by(tip.label) %>%
+  dplyr::summarise(value = value) %>%
+  filter(is.na(tip.label) == FALSE) %>%
+  pivot_wider(names_from = value)
+
+#plot cladogram
+ggtree(phy, branch.length = "none", size = 1) %<+% symbs +
+  geom_tiplab(fontface = "italic", size = 10, offset = 0.2) +
+  geom_tippoint(aes(color=F), size = 8) +
+  geom_tippoint(aes(color=A), size = 8, position = position_dodge(width = 1)) +
+  geom_tippoint(aes(color=B), size = 8, position = position_dodge(width = 2)) +
+  geom_tippoint(aes(color=C), size = 8, position = position_dodge(width = 3)) +
+ scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
+  xlim(-2, 40) + 
+  theme(legend.position = "bottom")
+
+```
+
+
+
+
+```{r unused code, include = FALSE}
+# por_tbl <- as.tibble(por_phy)
+# por_tbl$specie_name <- NA
+# por_tbl$specie_name[1:71] <- str_sub(por_tbl$label[1:71], end = sapply(str_locate_all(por_tbl$label[1:71]," "), "[[", 2)-1)
+# nodes <- data.frame(NA, matrix(ncol = 2, nrow = 55))
+# nodes$specie_name <- por_phy$tip.label[por_phy$tip.label %in% por_sym_prop$specie_name]
+# nodes$node <- por_phy$node.label[por_phy$tip.label %in% por_sym_prop$specie_name]
+# por_tbl1 <- full_join(por_tbl, por_sym_prop, by = "specie_name")
+# por_tbl1 <- por_tbl1 %>%
+#   filter(is.na(parent) == FALSE) %>%
+#   select(-specie_name)
+# por_phy1 <- as.phylo(por_tbl1)
+#   
+# A <- syms %>%
+#   mutate(prop = ifelse(value != "A", 0, prop))
+# 
+# p2 <- ggplot(syms, aes(x="", y=prop, fill=value)) +
+#   geom_bar(stat="identity", width=1, color="white") +
+#   coord_polar("y", start=0) +
+#   theme_void() +
+#   facet_wrap(~tip.label)
+# p2 
+# 
+# p2 <- facet_plot(p1, panel="A", data=A, geom=geom_point, aes(x=prop), col="red")
+
+```
+
