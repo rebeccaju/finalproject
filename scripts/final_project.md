@@ -1,28 +1,18 @@
----
-title: "Final Project"
-author: "R Ju"
-date: "11/29/2020"
-output:
-  github_document: default
-  html_document: default
----
+Final Project
+================
+R Ju
+11/29/2020
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
-knitr::opts_knit$set(root.dir = "/Users/rju/Coursework/Phylogenetic Biology/finalproject/")
-library(tidyverse)
-library(apex)
-library(ape)
-library(ggtree)
-```
+\#\#Data collection
 
+To begin, I will compile a list of known Symbiodinium clade associations
+for all Scleractinia species [coraltraits.org](coraltraits.org). Data
+downloaded from this site also includes the geographic location of the
+sample, as well as methodology used. These factors may be useful in
+comparative analyses.
 
-##Data collection
-
-To begin, I will compile a list of known Symbiodinium clade associations for all Scleractinia species [coraltraits.org](coraltraits.org). Data downloaded from this site also includes the geographic location of the sample, as well as methodology used. These factors may be useful in comparative analyses.
-
-```{r data clean, fig.width=20, fig.height=20}
-#load in coraltraits.org data
+``` r
+#load in coraltraits.org data and filter for species with at least 10 observations
 syms <- read.csv("data/ctdb_1.1.0_data.csv") %>%
   filter(trait_name == "Symbiodinium clade") %>%
   select(specie_id, specie_name, location_id, location_name, trait_id, trait_name, methodology_id, methodology_name, value)
@@ -38,11 +28,18 @@ ggplot(syms) +
                      panel.grid.minor = element_blank(), axis.line = element_blank()) 
 ```
 
-Six different *Symbiodinium* clades are found within Scleractinia. However, we see that clade C is dominant across most species. Additionally, there is quite a bit of variation between the number of observations for each species. 
+![](final_project_files/figure-gfm/data%20clean-1.png)<!-- -->
 
-To better see the different *Symbiodinium* associations for each species, we can also plot pie graphs representing the proportion of the total number of observations attributed to each clade.
+Six different *Symbiodinium* clades are found within Scleractinia.
+However, we see that clade C is dominant across most species.
+Additionally, there is some variation between the number of observations
+for each species.
 
-```{r, fig.width=20, fig.height=20}
+To better see the different *Symbiodinium* associations for each
+species, we can also plot pie graphs representing the proportion of the
+total number of observations attributed to each clade.
+
+``` r
 #visualize proportion data
 syms_prop <- syms %>%
   count(specie_name, value) %>%
@@ -55,52 +52,55 @@ syms_prop %>%
   scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
   facet_wrap(~specie_name) + 
   theme_void()
-
 ```
 
+![](final_project_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
-##Phylogenetic inference
+\#\#Phylogenetic inference
 
-For this analysis, I will build a tree using 
+For this analysis, I will build a tree using
 
 Clade name: Scleractinia (taxid: 6125)
 
+Bait sequence: [Siderastrea radians mitochondrion, complete
+genome](https://www.ncbi.nlm.nih.gov/nuccore/DQ643838.1?report=fasta)
 
-Bait sequence: [Siderastrea radians mitochondrion, complete genome](https://www.ncbi.nlm.nih.gov/nuccore/DQ643838.1?report=fasta)
-
-
-Sequences were gathered and aligned with the NCBI blast tool. The headings of the downloaded sequences were modified using the following sed command:
+Sequences were gathered and aligned with the NCBI blast tool. The
+headings of the downloaded sequences were modified using the following
+sed command:
 
     sed -E 's/>[a-zA-Z]+\|([a-zA-Z_?0-9\.]+)\|.+\[organism=([a-zA-Z0-9]+)( [a-zA-Z0-9]+\. | )([a-zA-Z0-9]+).+?/>\2_\4/g' alignment.raw.fasta > alignment.fasta
-    
 
-Whole mitochondrial genome sequences were chosen when available. However, some species only have shorter mitochondrial sequences (12S, 16S, COI, CYTB, etc.). These sequences were aligned and concatenated using the 'apex' R package.
+Whole mitochondrial genome sequences were chosen when available.
+However, some species only have shorter mitochondrial sequences (12S,
+16S, COI, CYTB, etc.). These sequences were aligned and concatenated
+using the ‘apex’ R package.
 
-```{r}
+``` r
 rawseqs <- read.multiFASTA("cluster/final/alignment.fasta")[-1]
 seqs <- concatenate(rawseqs)
 write.dna(seqs, file = "cluster/final/alignment.cat.fasta", format = "fasta")
 ```
 
-
-Phylogeny was inferred using IQ-TREE and the cluster. Bootstrap analyses were conducted to determine support values for the resulting tree. BAYES?
+Phylogeny was inferred using IQ-TREE and the cluster. Bootstrap analyses
+were conducted to determine support values for the resulting tree.
+BAYES?
 
 Job script:
 
     #!/bin/bash
-
+    
     #SBATCH --partition=eeb354
     #SBATCH --job-name=scler_iqtree
     #SBATCH --time=2:00:00
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=8
-
+    
     module load IQ-TREE/1.6.12
-
+    
     iqtree -s alignment.cat.fasta -bb 1000 -nt AUTO
 
-
-```{r, fig.height=30, fig.width=20}
+``` r
 #read in cluster output
 phy <- read.tree("cluster/final/alignment.cat.fasta.treefile") 
 
@@ -113,9 +113,9 @@ plot(phy1) #maybe plot with ggtree? figure is messy and hard to read
 nodelabels(phy1$node.label)
 ```
 
+![](final_project_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-
-```{r, fig.height = 40, fig.width=40}
+``` r
 #create data set with symb clade and tip labels
 tips <- data.frame(tip.label=phy$tip.label, specie_name=str_replace(phy$tip.label, "_", " "))
 
@@ -139,4 +139,4 @@ ggtree(phy1, branch.length = "none", size = 1) %<+% symbs +
   theme(legend.position = "bottom")
 ```
 
-
+![](final_project_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
