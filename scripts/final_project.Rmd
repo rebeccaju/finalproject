@@ -52,12 +52,13 @@ syms_prop <- syms %>%
   group_by(specie_name) %>%
   mutate(prop = prop.table(n)) #saves prop table of symbiodinium clade by species
 syms_prop %>%
+  filter(specie_name %in% str_replace(phy$tip.label, "_", " ") == TRUE) %>%
   ggplot(aes(x = "", y = prop, fill = value), size = 12) +
   geom_bar(stat = "identity", width = 0.5, color = "white") +
   coord_polar("y", start=0) +
   scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
-  facet_wrap(~specie_name) +
-  theme_void()
+  facet_wrap(~specie_name, ncol = 20) +
+  theme_void() + theme(legend.position = "bottom", text = element_text(size = 4))
 
 ```
 
