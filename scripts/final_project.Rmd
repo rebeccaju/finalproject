@@ -35,8 +35,10 @@ syms <- read.csv("data/ctdb_1.1.0_data.csv") %>%
   group_by(specie_id) %>%
   filter(n() >= 10)
 
+#write.csv(syms, "data/syms.csv")
+
 #visualize data (Symbiodinium clades by species)
-ggplot(syms) +
+p1 <- ggplot(syms) +
   geom_bar(aes(x = value, fill = value)) +
   facet_wrap(~specie_name) +
   labs(x = 'Symbiodinium clade',
@@ -44,6 +46,9 @@ ggplot(syms) +
   scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
   theme_bw() + theme(panel.border = element_rect(color="black", fill=NA, size=0.75), panel.grid.major = element_blank(),
                      panel.grid.minor = element_blank(), axis.line = element_blank())
+p1 
+
+#ggsave("output/sym_clades_bar.pdf", p1, width = 12, height = 9, units = "in")
 ```
 
 Six different *Symbiodinium* clades are found within Scleractinia. However, we see that clade C is dominant across most species. Additionally, there is quite a bit of variation between the number of observations for each species. 
@@ -56,7 +61,9 @@ syms_prop <- syms %>%
   count(specie_name, value) %>%
   group_by(specie_name) %>%
   mutate(prop = prop.table(n)) #saves prop table of symbiodinium clade by species
-syms_prop %>%
+#write.csv(syms_prop, "data/syms_prop.csv")
+
+p2 <- syms_prop %>%
   ggplot(aes(x = "", y = prop, fill = value), size = 12) +
   geom_bar(stat = "identity", width = 0.5, color = "white") +
   coord_polar("y", start=0) +
@@ -64,6 +71,7 @@ syms_prop %>%
   facet_wrap(~specie_name) +
   theme_void() + theme(legend.position = "bottom")
 
+#ggsave("output/sym_clades_pie.pdf", p2, width = 20, height = 10, units = "in")
 ```
 
 
@@ -118,19 +126,23 @@ Job script:
 The IQ-TREE composition chi-test fails for 101 species. This may be addressed by using fewer genes (just COI and CYTB, for example) which are more commonly available to reduce gaps. Troubleshooting of the actual inference may also yield more results.
 
 
-We can read in the treefile and look at the resulting phylogeny, complete with support values from the ML analysis. The log file indicates that the best fit model is GTR+F+I+G4, based on BIC. 
+We can read in the treefile and look at the resulting phylogeny, complete with support values from the ML analysis. The best fit model is TVM+F+I+G4, based on BIC. 
 
 ```{r, fig.height=30, fig.width=20}
 #read in cluster output
-phy <- read.tree("cluster/final/alignment.co1.cat.fasta.treefile") 
+phyraw <- read.tree("data/cluster/final/alignment.co1.cat.fasta.treefile") 
+phy <- root(phyraw, "Xestospongia_testudinaria")
 
 #drop tips not in symbiont clade data set
 drops <- phy$tip.label[phy$tip.label %in% str_replace(syms_prop$specie_name, " ", "_") == FALSE]
 phy1 <- drop.tip(phy, drops)
+#write.tree(phy1, "output/phy1")
 
 #plot tree with support values
+#pdf("output/tree_sv.pdf", width = 20, height = 30)
 plot(phy1) 
 nodelabels(phy1$node.label)
+#dev.off()
 ```
 
 
@@ -153,9 +165,12 @@ clades <- full_join(tips, filter(syms_prop, specie_name %in% str_replace(phy1$ti
   filter(is.na(tip.label) == FALSE) %>% #removing internal nodes
   pivot_wider(names_from = value)
 
+#write.csv(clades, "data/clades.csv")
+
 #plot cladogram
-ggtree(phy1, branch.length = "none") %<+% clades +
+p3 <- ggtree(phy1, branch.length = "none") %<+% clades +
   geom_tiplab(fontface = "italic", size = 10, offset = 0.2) +
+  geom_tippoint(aes(color=G), size = 8, position = position_dodge(width = 0)) +
   geom_tippoint(aes(color=F), size = 8) +
   geom_tippoint(aes(color=B), size = 8, position = position_dodge(width = 0.75)) +
   geom_tippoint(aes(color=A), size = 8, position = position_dodge(width = 1.5)) +
@@ -164,13 +179,13 @@ ggtree(phy1, branch.length = "none") %<+% clades +
   scale_color_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
   xlim(-2, 35) +  
   theme(legend.position = "bottom")
+
+#ggsave("output/tree_sym.pdf", p3, width = 30, height = 40, units = "in")
 ```
 
-As clade C is almost ubiquitous, a first glance at this cladogram doesn't reveal that much in terms of phylogenetic conservation. However, it does seem that associations with less common clades, such as B or A, tend to be shared across sister tips (ex. Orbicella spp.). Interestingly, tips that diverged most recently seem to associate with fewer clades, suggesting that evolutionary time may be a factor. 
-
+As clade C is almost ubiquitous, a first glance at this cladogram doesn't reveal that much in terms of phylogenetic conservation. However, it does seem that associations with less common clades, such as B or A, tend to be shared across sister tips (ex. Orbicella spp.).
 
 ## Geospatial distribution of symbiont clades
-
 
 I hypothesize that geospatial distribution may also correlate with symbiont clade associations. Of course, as species are not randomly distributed, phylogenetic relationships and location data are often inseparable. However, it is still interesting to visualize the distribution of symbiont clades.
 
@@ -179,30 +194,32 @@ Here, I plot each symbiont clade observation onto a world map.
 ```{r geo, fig.width=20, fig.height = 20}
 #read in location data with lat and long
 locs <- read.csv("data/locations.csv") %>%
-  select(location_id, latitude, longitude)
+  dplyr::select(location_id, latitude, longitude)
 
 #combine with symbiont data
 geosyms <- merge(locs, syms, by = "location_id")
+#write.csv(geosyms, "data/geosyms.csv")
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
-ggplot() +
+p4 <- ggplot() +
   geom_sf(data = world) +
   xlab("Longitude") + 
   ylab("Latitude") +
-  geom_point(data = geosyms, aes(x = longitude, y = latitude, color = value), size = 2, alpha = 0.8) +
-  scale_color_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
-  facet_wrap(~value, ncol = 2) +
+  geom_point(data = filter(geosyms, value %in% c("A", "B", "C", "D") == TRUE), aes(x = longitude, y = latitude, color = value), size = 2, alpha = 0.8) +
+  scale_color_manual(breaks = c("C", "B", "A",  "D"), values = c("tomato", "cornflowerblue", "seagreen2", "gold"), name = "Symbiodinium clade") + 
+  facet_wrap(~value, ncol = 1) +
   coord_sf(ylim = c(-50, 50), expand = FALSE) +
   ggtitle("Symbiont clade observations by location") +
   theme(panel.grid.major = element_line(color = gray(.5), linetype = "dashed", size = 0.5), panel.background = element_rect(fill = "aliceblue"))
+p4
+
+#ggsave("output/geodist_syms.pdf", p4, width = 11, height = 8.5, units = "in")
 ```
 
 
-Clades C and D are well distributed, while clades A and B seem restricted to the Atlantic/Caribbean. Again, this doesn't tell us too much, as species distribution may also follow these patterns. Further analysis can be done by comparing symbiont and host ranges to tease out potential geographical influences.
+Clades C and D are well distributed, while clades A and B seem restricted to the Atlantic/Caribbean. 
 
-
-This analysis currently relies on data visualization to draw conclusions. Moving forward, I'd like to apply some statistical methods to quantify the relationships between location, phylogenetic relation, and symbiont clade association.
 
 ## Testing for phylogenetic signal
 
