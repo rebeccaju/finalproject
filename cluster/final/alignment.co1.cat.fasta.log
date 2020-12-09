@@ -1,0 +1,1191 @@
+IQ-TREE multicore version 1.6.12 for Linux 64-bit built Aug 15 2019
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    c03n02.grace.hpc.yale.internal (AVX, 125 GB RAM)
+Command: iqtree -s alignment.co1.cat.fasta -bb 1000 -nt AUTO
+Seed:    727301 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Tue Dec  8 20:33:43 2020
+Kernel:  AVX - auto-detect threads (20 CPU cores detected)
+
+Reading alignment file alignment.co1.cat.fasta ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 635 sequences with 658 columns, 517 distinct patterns
+320 parsimony-informative, 112 singleton sites, 226 constant sites
+                                 Gap/Ambiguity  Composition  p-value
+   1  Xestospongia_testudinaria          1.37%    failed      1.44%
+   2  Acropora_IP0357                    0.00%    passed     52.41%
+   3  Acropora_speciosa                  0.00%    passed     52.41%
+   4  Acropora_samoensis                 0.00%    passed     52.41%
+   5  Acropora_pulchra                   0.00%    passed     52.41%
+   6  Acropora_paniculata                0.00%    passed     52.41%
+   7  Acropora_millepora                 0.00%    passed     52.41%
+   8  Acropora_microclados               0.00%    passed     52.41%
+   9  Acropora_gemmifera                 0.00%    passed     52.41%
+  10  Acropora_donei                     0.00%    passed     52.41%
+  11  Acropora_anthocercis               0.00%    passed     52.41%
+  12  Acropora_hyacinthus                0.00%    passed     52.41%
+  13  Acropora_digitifera                0.00%    passed     52.41%
+  14  Acropora_BRI                       0.15%    passed     49.78%
+  15  Acropora_willisae                  0.15%    passed     49.78%
+  16  Acropora_valida                    0.15%    passed     49.78%
+  17  Acropora_divaricata                0.15%    passed     49.78%
+  18  Acropora_spicifera                 0.15%    passed     49.78%
+  19  Acropora_solitaryensis             0.15%    passed     49.78%
+  20  Acropora_selago                    0.15%    passed     49.78%
+  21  Acropora_secale                    0.15%    passed     49.78%
+  22  Acropora_nasuta                    0.15%    passed     49.78%
+  23  Acropora_nana                      0.15%    passed     49.78%
+  24  Acropora_muricata                  0.15%    passed     49.78%
+  25  Acropora_loripes                   0.15%    passed     49.78%
+  26  Acropora_lokani                    0.15%    passed     49.78%
+  27  Acropora_indonesia                 0.15%    passed     49.78%
+  28  Acropora_horrida                   0.15%    passed     49.78%
+  29  Acropora_florida                   0.15%    passed     49.78%
+  30  Acropora_desalwii                  0.15%    passed     49.78%
+  31  Acropora_dendrum                   0.15%    passed     49.78%
+  32  Acropora_clathrata                 0.15%    passed     49.78%
+  33  Acropora_aspera                    0.15%    passed     49.78%
+  34  Acropora_verweyi                   0.00%    passed     55.06%
+  35  Acropora_microphthalma             0.00%    passed     47.58%
+  36  Acropora_granulosa                 0.00%    passed     47.58%
+  37  Acropora_cytherea                  0.00%    passed     57.76%
+  38  Acropora_subglabra                 0.15%    passed     46.82%
+  39  Acropora_sarmentosa                0.15%    passed     45.00%
+  40  Acropora_polystoma                 0.15%    passed     54.42%
+  41  Acropora_glauca                    0.15%    passed     52.17%
+  42  Acropora_acuminata                 0.15%    passed     52.33%
+  43  Acropora_lutkeni                   0.61%    passed     54.50%
+  44  Acropora_valenciennesi             0.00%    passed     57.23%
+  45  Acropora_tenuis                    0.00%    passed     44.74%
+  46  Acropora_intermedia                0.00%    passed     42.69%
+  47  Acropora_humilis                   0.00%    passed     42.69%
+  48  Acropora_halmaherae                0.00%    passed     49.75%
+  49  Acropora_cervicornis               0.00%    passed     44.74%
+  50  Acropora_elseyi                    0.15%    passed     42.28%
+  51  Acropora_abrolhosensis             0.00%    passed     51.49%
+  52  Acropora_cerealis                  0.15%    passed     35.46%
+  53  Acropora_latistella                0.00%    passed     57.23%
+  54  Acropora_carduus                   0.15%    passed     54.43%
+  55  Acropora_pharaonis                 0.76%    passed     61.88%
+  56  Acropora_palmata                   6.99%    passed     45.62%
+  57  Isopora_togianensis                7.45%    passed     39.04%
+  58  Isopora_palifera                   7.45%    passed     35.47%
+  59  Acropora_robusta                  10.64%    passed     40.62%
+  60  Acropora_BC1                      10.64%    passed     40.62%
+  61  Acropora_branchi                  10.64%    passed     40.62%
+  62  Acropora_arabensis                10.64%    passed     40.62%
+  63  Galaxea_fascicularis              10.64%    passed     40.62%
+  64  Montipora_grisea                   0.00%    passed     40.18%
+  65  Montipora_digitata                 0.15%    passed     40.60%
+  66  Montipora_efflorescens             0.61%    passed     42.24%
+  67  Montipora_foliosa                  0.61%    passed     42.24%
+  68  Montipora_foveolata                0.61%    passed     42.24%
+  69  Montipora_truncata                 0.61%    passed     44.86%
+  70  Montipora_DM22                     0.61%    passed     42.24%
+  71  Montipora_DM13                     0.61%    passed     42.24%
+  72  Montipora_PM07                     0.61%    passed     42.24%
+  73  Montipora_fragilis                 0.61%    passed     42.24%
+  74  Isopora_brueggemanni               7.45%    passed     39.50%
+  75  Montipora_DM26                     0.61%    passed     39.60%
+  76  Montipora_DM16                     0.61%    passed     44.55%
+  77  Montipora_PM13                     0.61%    passed     39.60%
+  78  Montipora_PM01                     0.61%    passed     39.60%
+  79  Montipora_stellata                 0.61%    passed     50.32%
+  80  Montipora_gaimardi                 0.61%    passed     42.24%
+  81  Montipora_DM25                     0.61%    passed     44.86%
+  82  Montipora_DM21                     0.61%    passed     44.86%
+  83  Montipora_DM20                     0.61%    passed     44.86%
+  84  Montipora_DM18                     0.61%    passed     44.86%
+  85  Montipora_DM14                     0.61%    passed     44.86%
+  86  Montipora_DM12                     0.61%    passed     44.86%
+  87  Astreopora_YFK                     0.61%    passed     77.51%
+  88  Montipora_DM24                     0.61%    passed     43.32%
+  89  Alveopora_IP0381                   0.00%    passed     87.59%
+  90  Alveopora_spongiosa                0.00%    passed     90.18%
+  91  Montipora_YFK                      0.76%    passed     47.83%
+  92  Montipora_turgescens               3.04%    passed     23.08%
+  93  Montipora_flabellata               3.04%    passed     23.08%
+  94  Montipora_patula                   3.04%    passed     21.03%
+  95  Alveopora_japonica                 2.58%    passed     75.63%
+  96  Alveopora_excelsa                  2.58%    passed     75.63%
+  97  Alveopora_YFK                      2.74%    passed     80.98%
+  98  Siderastrea_siderea                0.00%    passed     82.23%
+  99  Alveopora_catalai                  3.19%    passed     68.81%
+ 100  Alveopora_verrilliana              3.19%    passed     76.72%
+ 101  Siderastrea_radians                0.00%    passed     80.68%
+ 102  Alveopora_tizardi                  4.56%    passed     64.34%
+ 103  Montipora_dilatata                 5.47%    passed     15.50%
+ 104  Pseudosiderastrea_tayamai          0.00%    passed     82.03%
+ 105  Leptoseris_TLS                     0.00%    passed     65.59%
+ 106  Fimbriaphyllia_ancora              0.00%    passed     67.92%
+ 107  Montipora_capitata                 5.47%    passed     14.41%
+ 108  Anacropora_matthai                 7.45%    passed     30.41%
+ 109  Pavona_varians                     0.00%    passed     73.48%
+ 110  Stephanocoenia_michelinii          0.00%    passed     98.70%
+ 111  Agaricia_agaricites                0.15%    passed     59.53%
+ 112  Acropora_natalensis               10.64%    passed     69.01%
+ 113  Pavona_explanulata                 0.00%    passed     68.84%
+ 114  Montipora_M5                       6.08%    passed     15.16%
+ 115  Agaricia_fragilis                  0.00%    passed     54.55%
+ 116  Montipora_incrassata               5.62%    passed     35.01%
+ 117  Astreopora_myriophthalma           7.45%    passed     72.86%
+ 118  Montipora_cactus                   7.45%    passed     24.63%
+ 119  Leptoseris_foliosa                 1.52%    passed     62.91%
+ 120  Montipora_GB                       8.51%    passed     21.51%
+ 121  Alveopora_KENAlv                   7.45%    passed     91.86%
+ 122  Montipora_undata                  10.64%    passed     34.02%
+ 123  Acropora_hemprichii               20.97%    passed     83.68%
+ 124  Siderastrea_savignyana             7.45%    passed     74.90%
+ 125  Montipora_danae                   10.64%    passed     41.61%
+ 126  Montipora_monasteriata            11.09%    passed     31.09%
+ 127  Pachyseris_YYC                     7.45%    passed     51.74%
+ 128  Pavona_venosa                      5.17%    passed     64.37%
+ 129  Siderastrea_stellata               7.45%    passed     79.56%
+ 130  Pachyseris_speciosa                7.45%    passed     51.74%
+ 131  Montipora_informis                11.09%    passed     27.39%
+ 132  Astreopora_randalli               10.64%    passed     73.97%
+ 133  Turbinaria_reniformis              0.15%    passed     53.26%
+ 134  Montipora_verrilli                11.85%    passed     34.07%
+ 135  Favites_spinosa                   10.79%    passed     58.30%
+ 136  Anacropora_forbesi                 7.45%    passed     13.19%
+ 137  Euphyllia_glabrescens              7.45%    passed     57.62%
+ 138  Ctenella_chagius                   7.45%    passed     75.51%
+ 139  Pavona_cactus                      7.45%    passed     47.93%
+ 140  Helioseris_cucullata               7.45%    passed     44.54%
+ 141  Tubastraea_IP0356                  0.00%    passed     55.70%
+ 142  Tubastraea_IP0355                  0.00%    passed     64.81%
+ 143  Pourtalopsammia_n                  0.00%    passed     49.51%
+ 144  Stylaraea_punctata                 0.00%    passed     76.31%
+ 145  Astroides_calycularis              1.52%    passed     53.67%
+ 146  Bernardpora_stutchburyi            0.00%    passed     77.66%
+ 147  Goniopora_columna                  0.00%    passed     60.09%
+ 148  Agaricia_humilis                   7.45%    passed     33.33%
+ 149  Balanophyllia_elegans              0.00%    passed     57.78%
+ 150  Gardineroseris_planulata           8.21%    passed     51.43%
+ 151  Porites_monticulosa                0.00%    passed     85.22%
+ 152  Goniopora_tenuidens                1.52%    passed     44.05%
+ 153  Goniopora_paliformis               0.00%    passed     55.05%
+ 154  Goniopora_djiboutiensis            1.52%    passed     48.95%
+ 155  Porites_rus                        0.00%    passed     85.83%
+ 156  Pavonia_clavus                     9.57%    passed     53.67%
+ 157  Porites_lutea                      0.61%    passed     85.91%
+ 158  Porites_evermanni                  0.61%    passed     85.91%
+ 159  Porites_annae                      0.61%    passed     85.91%
+ 160  Fungiacyathus_2431                 7.45%    passed     41.17%
+ 161  Turbinaria_peltata                 0.00%    passed     71.77%
+ 162  Porites_astreoides                 0.00%    passed     93.02%
+ 163  Gyrosmilia_interrupta             10.79%    passed     53.63%
+ 164  Deltocyathus_magnificus            9.57%    passed     29.95%
+ 165  Dactylotrochus_cervicornis         9.57%    passed     31.73%
+ 166  Pavona_gigantea                    9.27%    passed     44.23%
+ 167  Goniopora_norfolkensis             2.58%    passed     42.12%
+ 168  Porites_compressa                  0.00%    passed     86.92%
+ 169  Porites_lichen                     0.00%    passed     86.92%
+ 170  Porites_branneri                   0.00%    passed     73.48%
+ 171  Truncatoflabellum_A                9.57%    passed     57.87%
+ 172  Truncatoflabellum_macroeschara     9.57%    passed     88.90%
+ 173  Truncatoflabellum_australiensis    9.57%    passed     67.74%
+ 174  Flabellum_magnificum               9.57%    passed     64.28%
+ 175  Porites_lobata                     0.61%    passed     85.39%
+ 176  Porites_randalli                   0.61%    passed     89.15%
+ 177  Goniopora_burgosi                  2.89%    passed     31.48%
+ 178  Goniopora_albiconus                2.89%    passed     37.49%
+ 179  Flabellum_arcuatile                9.57%    passed     54.89%
+ 180  Goniopora_pedunculata              2.43%    passed     41.10%
+ 181  Leptoseris_A108                   10.94%    passed     43.90%
+ 182  Leptoseris_scabra                 10.94%    passed     43.90%
+ 183  Leptoseris_explanata              10.94%    passed     43.90%
+ 184  Pavona_maldivensis                10.94%    passed     43.90%
+ 185  Goniopora_somaliensis              4.26%    passed     40.29%
+ 186  Flabellum_apertum                  9.57%    passed     71.51%
+ 187  Goniopora_ZHF                      3.50%    passed     32.97%
+ 188  Echinopora_gemmacea               10.94%    passed     81.53%
+ 189  Hydnophora_exesa                  10.94%    passed     46.29%
+ 190  Javania_exserta                    9.57%    passed     68.75%
+ 191  Fungiacyathus_pusillus             9.57%    passed     47.08%
+ 192  Fungiacyathus_fragilis             9.57%    passed     52.31%
+ 193  Flabellum_lowekeyesi               9.57%    passed     70.13%
+ 194  Flabellum_deludens                 9.57%    passed     75.80%
+ 195  Cyathotrochus_pileus               9.57%    passed     18.85%
+ 196  Goniopora_cellulosa                2.89%    passed     39.84%
+ 197  Goniopora_lobata                   4.26%    passed     41.93%
+ 198  Fungiacyathus_turbinolioides       9.57%    passed     56.74%
+ 199  Flabellum_tuthilli                 9.57%    passed     55.78%
+ 200  Tubastraea_coccinea                4.26%    passed     45.46%
+ 201  Porites_YFK                        2.89%    passed     65.05%
+ 202  Machadoporites_tantillus           2.89%    passed     29.69%
+ 203  Goniopora_stokesi                  2.89%    passed     36.64%
+ 204  Tropidocyathus_lessonii            9.57%    passed     26.62%
+ 205  Placotrochides_scaphula            9.57%    passed     77.14%
+ 206  Flabellum_lamellulosum             9.57%    passed     74.04%
+ 207  Turbinaria_irregularis            10.79%    passed     60.05%
+ 208  Trochocyathus_rhombocolumna        9.57%    passed     47.32%
+ 209  Javania_lamprotichum               9.57%    passed     55.78%
+ 210  Flabellum_vaughani                 9.57%    passed     70.41%
+ 211  Flabellum_MVK                     10.33%    passed     54.76%
+ 212  Porites_panamensis                 3.50%    passed     50.06%
+ 213  Porites_solida                     3.50%    passed     63.21%
+ 214  Turbinaria_CSMCRI                  5.47%    passed     25.79%
+ 215  Javania_fusca                      9.57%    passed     52.89%
+ 216  Porites_colonensis                 3.50%    passed     71.09%
+ 217  Porites_divaricata                 3.50%    passed     46.74%
+ 218  Porites_duerdeni                   4.10%    passed     67.07%
+ 219  Porites_cylindrica                 3.80%    passed     60.40%
+ 220  Acropora_XNL                      28.88%    passed     68.62%
+ 221  Porites_Porit3917NA                7.45%    passed     88.13%
+ 222  Porites_Porit3730NA                7.45%    passed     88.13%
+ 223  Porites_Porit3317NA                7.45%    passed     88.13%
+ 224  Porites_Porit3224P                 7.45%    passed     88.13%
+ 225  Porites_Porit2739NA                7.45%    passed     88.13%
+ 226  Porites_Porit2523NA                7.45%    passed     88.13%
+ 227  Porites_Porit2438P                 7.45%    passed     88.13%
+ 228  Porites_Porit2325NA                7.45%    passed     88.13%
+ 229  Porites_Porit2090NA                7.45%    passed     88.13%
+ 230  Porites_Porit2010NA                7.45%    passed     88.13%
+ 231  Porites_Porit1923NA                7.45%    passed     88.13%
+ 232  Porites_Porit1739NA                7.45%    passed     88.13%
+ 233  Porites_Porit1513NA                7.45%    passed     88.13%
+ 234  Porites_Porit1319NA                7.45%    passed     88.13%
+ 235  Porites_Porit2070NA                7.45%    passed     88.13%
+ 236  Porites_Porit1133NA                7.45%    passed     88.13%
+ 237  Balanophyllia_europaea             8.97%    passed     34.28%
+ 238  Tubastraea_OKTub                   7.45%    passed     58.67%
+ 239  Turbinaria_mesenterina             8.97%    passed     27.80%
+ 240  Dendrophyllia_OK31                 7.45%    passed     57.78%
+ 241  Balanophyllia_E                    9.88%    passed     85.46%
+ 242  Porites_Porit3824P                 7.45%    passed     87.48%
+ 243  Porites_Porit2832P                 7.45%    passed     87.48%
+ 244  Porites_Porit2622P                 7.45%    passed     87.48%
+ 245  Porites_Porit2220P                 7.45%    passed     87.48%
+ 246  Porites_Porit2100P                 7.45%    passed     87.48%
+ 247  Porites_Porit2060P                 7.45%    passed     87.48%
+ 248  Porites_Porit1614P                 7.45%    passed     87.48%
+ 249  Porites_Porit1428P                 7.45%    passed     87.48%
+ 250  Porites_Porit2014P                 7.45%    passed     87.48%
+ 251  Porites_Porit1011P                 7.45%    passed     87.48%
+ 252  Turbinaria_heronensis              8.97%    passed     23.60%
+ 253  Dendrophyllia_cornigera            8.97%    passed     39.09%
+ 254  Balanophyllia_nov                  9.88%    passed     64.47%
+ 255  Javania_nov                        9.57%    passed     53.96%
+ 256  Porites_CSMCRI                     5.47%    passed     69.83%
+ 257  Balanophyllia_imperialis           9.57%    passed     44.60%
+ 258  Turbinaria_G20                     8.97%    passed     24.31%
+ 259  Porites_Porit2080P                 7.45%    passed     85.12%
+ 260  Porites_Porit940P                  7.45%    passed     89.04%
+ 261  Porites_Porit1920P                 7.45%    passed     89.04%
+ 262  Euphyllia_cristata                15.81%    passed     69.03%
+ 263  Tubastraea_micranthus              8.97%    passed     32.29%
+ 264  Goniopora_OK54                     7.45%    passed     50.29%
+ 265  Acropora_69                       31.16%    passed     37.97%
+ 266  Balanophyllia_F                   10.64%    passed     73.97%
+ 267  Balanophyllia_cornu                9.88%    passed     63.22%
+ 268  Tubastraea_aurea                   8.97%    passed     38.80%
+ 269  Dendrophyllia_arbuscula            8.97%    passed     34.44%
+ 270  Acropora_248                      31.16%    passed     41.98%
+ 271  Acropora_180                      31.16%    passed     31.95%
+ 272  Heteropsammia_cochlea              8.97%    passed     43.34%
+ 273  Cladopsammia_gracilis              8.97%    passed     39.41%
+ 274  Cladopsammia_eguchii               8.97%    passed     48.85%
+ 275  Acropora_159                      31.16%    passed     35.69%
+ 276  Balanophyllia_C                    9.88%    passed     69.37%
+ 277  Balanophyllia_desmophyllioides     9.88%    passed     80.20%
+ 278  Dendrophyllia_BC1                 10.79%    passed     53.73%
+ 279  Balanophyllia_D                    9.88%    passed     73.84%
+ 280  Rhizopsammia_wettsteini            8.97%    passed     44.49%
+ 281  Dendrophyllia_RA                   8.97%    passed     40.76%
+ 282  Balanophyllia_A                    9.88%    passed     57.37%
+ 283  Porites_ZHF                        5.78%    passed     57.46%
+ 284  Cladopsammia_RA                    8.97%    passed     35.54%
+ 285  Tubastraea_1                       8.97%    passed     21.10%
+ 286  Duncanopsammia_axifuga             8.97%    passed     42.25%
+ 287  Truncatoflabellum_B               10.18%    passed     35.38%
+ 288  Enallopsammia_rostrata             9.88%    passed     30.81%
+ 289  Goniopora_planulata               10.79%    passed     31.94%
+ 290  Dendrophylliidae_gen              12.77%    passed     46.41%
+ 291  Porites_3                         10.33%    passed     79.16%
+ 292  Letepsammia_formosissima           9.57%    passed     21.45%
+ 293  Javania_antarctica                18.39%    passed     93.62%
+ 294  Flabellum_curvatum                20.97%    passed     92.78%
+ 295  Flabellum_thouarsii               18.84%    passed     79.60%
+ 296  Rhombopsammia_niphada              9.57%    passed     25.58%
+ 297  Dendrophyllia_johnsoni            18.24%    passed     85.54%
+ 298  Dendrophyllia_laboreli            18.24%    passed     87.85%
+ 299  Tethocyathus_endesa               22.64%    passed     78.70%
+ 300  Javania_borealis                  18.39%    passed     74.02%
+ 301  Stephanocyathus_coronatus         21.28%    passed     96.22%
+ 302  Flabellum_flexuosum               21.58%    passed     88.22%
+ 303  Ceratotrochus_magnaghii           20.97%    passed     79.98%
+ 304  Gardineria_paradoxa               10.03%    passed     56.58%
+ 305  Gardineria_hawaiiensis            11.25%    passed     61.51%
+ 306  Tubastraea_tagusensis             27.36%    passed     32.17%
+ 307  Javania_cailleti                  22.49%    passed     32.86%
+ 308  Montipora_190                     31.31%    passed     22.33%
+ 309  Galaxea_astreata                  31.00%    passed     84.22%
+ 310  Tubastraea_DF                     27.36%    passed     34.57%
+ 311  Pavona_191                        31.16%    passed     39.73%
+ 312  Pavona_244                        31.16%    passed     43.57%
+ 313  Pavona_247                        31.16%    passed     37.10%
+ 314  Acropora_formosa                  29.33%    passed     93.39%
+ 315  Cyphastrea_XNL                    29.03%    passed     91.87%
+ 316  Madracis_pharensis                22.49%    passed     43.74%
+ 317  Pavona_frondifera                 29.03%    passed     86.34%
+ 318  Dipsastraea_rotumana              28.88%    passed     81.54%
+ 319  Platygyra_daedalea                29.18%    passed     81.42%
+ 320  Montipora_XNL                     29.18%    passed     81.42%
+ 321  Goniopora_gracilis                28.88%    passed     82.16%
+ 322  Favites_abdita                    30.24%    passed     80.40%
+ 323  Tubastraea_LK                     27.20%    passed     37.57%
+ 324  Dipsastraea_speciosa              28.88%    passed     83.78%
+ 325  Plesiastrea_versipora              0.00%    passed     39.08%
+ 326  Montastraea_cavernosa              0.00%    passed     24.31%
+ 327  Porites_nigrescens                29.03%    passed     92.24%
+ 328  Mycetophyllia_aliciae              0.61%    passed     65.03%
+ 329  Porites_2                         28.88%    passed     92.20%
+ 330  Oculina_varicosa                   0.00%    passed     26.93%
+ 331  Astrea_curta                       0.15%    passed     39.77%
+ 332  Cyphastrea_serailia                0.15%    passed     44.72%
+ 333  Platygyra_crosslandi               0.00%    passed     39.60%
+ 334  Platygyra_pini                     0.00%    passed     39.60%
+ 335  Platygyra_sinensis                 0.00%    passed     39.60%
+ 336  Oculina_patagonica                 0.00%    passed     31.65%
+ 337  Oculina_KL                         0.00%    passed     31.65%
+ 338  Porites_30                        31.16%    passed     54.05%
+ 339  Platygyra_contorta                 0.00%    passed     39.60%
+ 340  Platygyra_ryukyuensis              0.00%    passed     39.60%
+ 341  Favites_stylifera                  0.00%    passed     39.60%
+ 342  Dipsastraea_maxima                 0.00%    passed     19.89%
+ 343  Favia_maritima                     0.00%    passed     26.77%
+ 344  Oculina_diffusa                    0.00%    passed     31.65%
+ 345  Solenastrea_bournoni               0.00%    passed     26.53%
+ 346  Favia_fragum                       0.00%    passed     40.38%
+ 347  Oxypora_lacera                     0.15%    passed     37.14%
+ 348  Hydnophora_pilosa                  0.15%    passed     42.18%
+ 349  Hydnophora_microconos              0.15%    passed     42.18%
+ 350  Favites_pentagona                  0.15%    passed     44.27%
+ 351  Cyphastrea_chalcidicum             0.15%    passed     44.27%
+ 352  Oculina_TLS                        0.15%    passed     33.84%
+ 353  Micromussa_amakusensis             0.00%    passed     50.30%
+ 354  Goniastrea_pectinata               0.00%    passed     26.94%
+ 355  Coelastrea_aspera                  0.00%    passed     25.08%
+ 356  Favia_WF143                        0.00%    passed     25.08%
+ 357  Dipsastraea_matthaii               0.00%    passed     25.08%
+ 358  Dipsastraea_favus                  0.00%    passed     25.08%
+ 359  Astrangia_poculata                 0.00%    passed     31.20%
+ 360  Porites_102                       31.16%    passed     57.04%
+ 361  Porites_31                        31.16%    passed     64.27%
+ 362  Paramontastraea_salebrosa          0.00%    passed     25.08%
+ 363  Micromussa_multipunctata           0.00%    passed     50.30%
+ 364  Dipsastraea_rosaria                0.00%    passed     25.08%
+ 365  Oculina_robusta                    0.00%    passed     31.76%
+ 366  Diploria_labyrinthiformis          0.00%    passed     35.77%
+ 367  Colpophyllia_natans                0.00%    passed     35.82%
+ 368  Pleuractis_granulosa               0.15%    passed     11.62%
+ 369  Anthemiphyllia_patera              9.73%    passed     18.47%
+ 370  Oulophyllia_bennettae              0.00%    passed     39.76%
+ 371  Leptoria_phrygia                   0.00%    passed     39.60%
+ 372  Favia_WF148                        0.00%    passed     23.21%
+ 373  Astrea_annuligera                  0.00%    passed     23.12%
+ 374  Favites_valenciennesi              0.00%    passed     23.12%
+ 375  Merulina_scabricula                0.00%    passed     28.87%
+ 376  Merulina_ampliata                  0.00%    passed     28.87%
+ 377  Leptoria_irregularis               0.00%    passed     39.60%
+ 378  Goniastrea_retiformis              0.00%    passed     35.29%
+ 379  Goniastrea_stelligera              0.00%    passed     35.29%
+ 380  Solenastrea_hyades                 0.00%    passed     25.59%
+ 381  Pseudodiploria_strigosa            0.61%    passed     45.90%
+ 382  Acanthastrea_echinata              0.15%    passed     28.83%
+ 383  Merulina_TS                        0.15%    passed     37.27%
+ 384  Moseleya_latistellata              0.00%    passed     33.00%
+ 385  Favites_magnistellata              0.15%    passed     44.27%
+ 386  Favites_colemani                   0.15%    passed     44.27%
+ 387  Favites_flexuosa                   0.15%    passed     44.27%
+ 388  Favites_rotundata                  0.15%    passed     44.27%
+ 389  Psammocora_contigua                0.15%    passed     13.59%
+ 390  Lobactis_scutaria                  0.15%    passed      5.28%
+ 391  Blastomussa_vivida                 2.74%    passed     91.03%
+ 392  Podabacia_crustacea                0.15%    passed      8.02%
+ 393  Coscinaraea_columna                0.15%    passed     14.32%
+ 394  Platygyra_lamellina                2.43%    passed     58.55%
+ 395  Madrepora_oculata                 10.18%    passed     23.24%
+ 396  Phyllangia_americana               0.00%    passed     14.24%
+ 397  Homophyllia_australis              3.50%    passed     71.82%
+ 398  Australophyllia_wilsoni            3.50%    passed     50.38%
+ 399  Favia_gravida                      3.50%    passed     59.49%
+ 400  Physogyra_lichtensteini            3.50%    passed     75.96%
+ 401  Plerogyra_sinuosa                  3.50%    passed     75.96%
+ 402  Favites_complanata                 3.50%    passed     67.88%
+ 403  Caryophyllia_smithii               0.15%    passed     74.17%
+ 404  Echinopora_pacificus               2.43%    passed     51.19%
+ 405  Orbicella_annularis                0.15%    passed     56.96%
+ 406  Blastomussa_wellsi                 2.89%    passed     95.11%
+ 407  Caulastraea_furcata                5.62%    passed     53.92%
+ 408  Caulastraea_echinulata             5.62%    passed     62.95%
+ 409  Oxypora_crassispinosa              3.80%    passed     59.05%
+ 410  Oxypora_convoluta                  3.80%    passed     54.72%
+ 411  Oxypora_echinata                   3.80%    passed     59.05%
+ 412  Paragoniastrea_australensis        0.00%    passed     39.68%
+ 413  Paragoniastrea_russelli            0.00%    passed     35.29%
+ 414  Eusmilia_TLS                       0.00%    passed     14.89%
+ 415  Madracis_myriaster                 0.00%    passed     32.44%
+ 416  Echinophyllia_aspera               3.50%    passed     56.55%
+ 417  Cyphastrea_microphthalma           3.50%    passed     50.78%
+ 418  Caryophyllia_ralphae               9.57%    passed     93.30%
+ 419  Mycetophyllia_danaana              6.53%    passed     67.38%
+ 420  Echinopora_horrida                 2.43%    passed     41.14%
+ 421  Goniastrea_favulus                 2.43%    passed     46.35%
+ 422  Oulophyllia_crispa                 2.43%    passed     61.43%
+ 423  Favia_laxa                         2.43%    passed     38.64%
+ 424  Cynarina_lacrymalis                2.89%    passed     48.94%
+ 425  Dipsastraea_pallida                2.89%    passed     68.33%
+ 426  Psammocora_profundacella          12.01%    passed     36.32%
+ 427  Pocillopora_LEMAC                  0.00%    passed     47.31%
+ 428  Lobophyllia_hataii                 3.80%    passed     66.15%
+ 429  Echinophyllia_tarae                3.80%    passed     61.76%
+ 430  Oxypora_glabra                     3.80%    passed     61.76%
+ 431  Echinophyllia_orpheensis           3.80%    passed     61.76%
+ 432  Echinophyllia_M908                 3.80%    passed     61.76%
+ 433  Echinophyllia_M906                 3.80%    passed     61.76%
+ 434  Echinophyllia_M905                 3.80%    passed     61.76%
+ 435  Echinophyllia_MNHN                 3.80%    passed     61.76%
+ 436  Echinophyllia_echinoporoides       3.80%    passed     61.76%
+ 437  Echinophyllia_SA778                3.80%    passed     61.76%
+ 438  Echinophyllia_SA1192               3.80%    passed     61.76%
+ 439  Echinophyllia_SA1126               3.80%    passed     61.76%
+ 440  Meandrina_meandrites               0.00%    passed     12.15%
+ 441  Dichocoenia_stokesii               0.00%    passed     15.50%
+ 442  Homophyllia_bowerbanki             3.50%    passed     69.04%
+ 443  Acanthastrea_hemprichii            3.50%    passed     50.74%
+ 444  Lobophyllia_corymbosa              3.50%    passed     65.80%
+ 445  Sclerophyllia_maxima               3.50%    passed     57.30%
+ 446  Blastomussa_loyae                  3.50%    passed     95.90%
+ 447  Isophyllia_sinuosa                 6.53%    passed     69.07%
+ 448  Craterastrea_levis                 6.99%    passed     10.41%
+ 449  Orbicella_faveolata                0.15%    passed     56.96%
+ 450  Lobophyllia_rowleyensis            5.93%    passed     50.62%
+ 451  Stylophora_PdCOISy3                0.61%    passed     61.24%
+ 452  Paramontastraea_peresi             2.89%    passed     59.36%
+ 453  Astrea_devantieri                  2.89%    passed     59.36%
+ 454  Echinopora_mammiformis             3.65%    passed     56.00%
+ 455  Oulastrea_crispata                 4.41%    failed      3.60%
+ 456  Stylophora_pistillata              0.61%    passed     61.24%
+ 457  Leptastrea_bottae                  7.90%    passed     14.19%
+ 458  Pectinia_lactuca                   5.62%    passed     50.23%
+ 459  Physophyllia_ayleni                5.62%    passed     50.23%
+ 460  Favia_favus                        5.62%    passed     35.38%
+ 461  Platygyra_verweyi                  5.62%    passed     50.41%
+ 462  Coelastrea_palauensis              5.62%    passed     40.33%
+ 463  Lobophyllia_ishigakiensis          3.80%    passed     48.56%
+ 464  Echinophyllia_patula               3.80%    passed     56.36%
+ 465  Pocillopora_damicornis             0.00%    passed     36.93%
+ 466  Lobophyllia_radians                3.50%    passed     61.27%
+ 467  Rhizosmilia_robusta                9.57%    passed     91.09%
+ 468  Favites_paraflexuosus              5.78%    passed     50.41%
+ 469  Diploastrea_heliopora              5.78%    passed     37.11%
+ 470  Pocillopora_environmental          0.15%    passed     39.07%
+ 471  Lobophyllia_vitiensis              5.93%    passed     54.93%
+ 472  Favites_halicora                   2.89%    passed     69.10%
+ 473  Lobophylliidae_gen                 5.62%    passed     43.95%
+ 474  Porites_harrisoni                  5.62%    passed     23.71%
+ 475  Leptastrea_pruinosa                7.90%    passed     17.04%
+ 476  Mycedium_robokaki                  5.62%    passed     51.74%
+ 477  Mycedium_elephantotus              5.62%    passed     51.74%
+ 478  Scapophyllia_cylindrica            6.38%    passed     53.91%
+ 479  Dipsastraea_amicorum               5.62%    passed     39.69%
+ 480  Favia_DH                           5.62%    passed     33.13%
+ 481  Goniastrea_edwardsi                5.62%    passed     39.69%
+ 482  Blastomussa_merleti                3.50%    passed     93.57%
+ 483  Echinopora_lamellosa               5.78%    passed     44.97%
+ 484  Pectinia_alcicornis                6.53%    passed     44.60%
+ 485  Trachyphyllia_geoffroyi            6.53%    passed     31.75%
+ 486  Scolymia_PL1                       6.53%    passed     44.60%
+ 487  Lobophyllia_hemprichii             6.53%    passed     46.20%
+ 488  Favia_leptophylla                  6.53%    passed     39.45%
+ 489  Pocillopora_verrucosa              0.00%    passed     36.93%
+ 490  Favites_chinensis                  5.62%    passed     46.23%
+ 491  Caryophyllia_diomedeae            10.18%    passed     97.72%
+ 492  Dipsastraea_danai                  5.62%    passed     44.98%
+ 493  Lobophyllia_hassi                  3.80%    passed     74.27%
+ 494  Lobophyllia_agaricia               6.53%    passed     55.42%
+ 495  Lobophyllia_valenciennesii         6.53%    passed     44.60%
+ 496  Lobophyllia_robusta                6.53%    passed     41.08%
+ 497  Pectinia_paeonia                   6.53%    passed     46.75%
+ 498  Herpolitha_limax                   8.81%    passed      8.01%
+ 499  Cladocora_arbuscula                6.53%    passed     34.74%
+ 500  Cladocora_caespitosa               7.90%    passed     52.00%
+ 501  Leptastrea_purpurea                9.88%    passed     21.87%
+ 502  Acanthastrea_rotundoflora          6.53%    passed     27.57%
+ 503  Seriatopora_caliendrum             0.61%    passed     84.65%
+ 504  Seriatopora_hystrix                0.76%    passed     84.01%
+ 505  Trochocyathus_efateensis          10.18%    passed     67.44%
+ 506  Plerogyra_MVK                     10.18%    passed     81.42%
+ 507  Lobophyllia_flabelliformis         6.53%    passed     51.64%
+ 508  Leptastrea_transversa             11.09%    passed     24.46%
+ 509  Dipsastraea_truncata              10.18%    passed     49.86%
+ 510  Lobophyllia_diminuta               6.53%    passed     55.38%
+ 511  Nemenzophyllia_turbida             5.78%    passed     63.37%
+ 512  Leptoseris_solida                 12.31%    passed     10.78%
+ 513  Cyathelia_axillaris               10.33%    passed     79.47%
+ 514  Lobophyllia_erythraea              7.45%    passed     62.12%
+ 515  Favia_B49                         10.94%    passed     53.86%
+ 516  Acanthastrea_subechinata          10.94%    passed     82.42%
+ 517  Dipsastraea_vietnamensis          10.94%    passed     45.92%
+ 518  Favia_B22                         10.94%    passed     62.52%
+ 519  Favia_B52                         10.94%    passed     62.52%
+ 520  Dipsastraea_lizardensis           10.94%    passed     62.52%
+ 521  Favia_B28                         10.94%    passed     67.93%
+ 522  Favia_B23                         10.94%    passed     62.52%
+ 523  Lobophyllia_costata                6.84%    passed     57.46%
+ 524  Anthemiphyllia_dentata            10.18%    passed     72.55%
+ 525  Coscinaraea_monile                12.46%    passed     12.25%
+ 526  Horastrea_indica                  12.46%    passed      9.92%
+ 527  Heliofungia_MVK                   11.09%    passed     13.13%
+ 528  Dendrogyra_cylindrus               6.53%    passed     26.64%
+ 529  Eusmilia_fastigiata                6.53%    passed     19.52%
+ 530  Dasmosmilia_lymani                10.18%    passed     62.81%
+ 531  Stenocyathus_vermiformis          10.18%    passed     99.24%
+ 532  Caryophyllia_atlantica            10.18%    passed     57.19%
+ 533  Stylocoeniella_guentheri           7.45%    passed     56.28%
+ 534  Pectinia_africana                 10.79%    passed     75.57%
+ 535  Conotrochus_funicolumna           10.18%    passed     80.16%
+ 536  Anomastraea_irregularis           12.46%    passed     11.66%
+ 537  Pleuractis_paumotensis            14.29%    passed     10.79%
+ 538  Cycloseris_costulata              14.29%    failed      4.47%
+ 539  Psammocora_stellata               12.01%    passed     16.14%
+ 540  Paragoniastrea_deformis            7.45%    passed     60.62%
+ 541  Caryophyllia_grayi                10.18%    passed     97.92%
+ 542  Caryophylliidae_B                  9.57%    passed     14.17%
+ 543  Seriatopora_OK17                   7.45%    passed     87.95%
+ 544  Favia_B58                         10.64%    passed     82.57%
+ 545  Stephanocyathus_spiniger          10.18%    passed     24.57%
+ 546  Caryophyllia_lamellifera          10.18%    passed     95.26%
+ 547  Phyllangia_papuensis               9.57%    passed     11.86%
+ 548  Seriatopora_OK16                   7.45%    passed     89.23%
+ 549  Madracis_asanoi                   11.55%    passed     75.07%
+ 550  Psammocora_haimiana               11.25%    passed     12.86%
+ 551  Pocillopora_grandis               11.25%    passed     40.85%
+ 552  Deltocyathus_suluensis             9.88%    passed     84.14%
+ 553  Deltocyathus_inusitiatus           9.88%    passed     84.18%
+ 554  Stylophora_madagascarensis        11.25%    passed     51.17%
+ 555  Stylophora_subseriata             11.25%    passed     51.17%
+ 556  Deltocyathus_sarsi                 9.88%    passed     82.16%
+ 557  Deltocyathus_rotulus               9.88%    passed     84.79%
+ 558  Madracis_1                        13.53%    passed     78.48%
+ 559  Caryophyllia_rugosa               10.18%    passed     86.45%
+ 560  Caryophyllia_sarsiae              18.39%    passed     82.89%
+ 561  Deltocyathus_ornatus               9.88%    passed     82.16%
+ 562  Paraconotrochus_antarcticus       18.24%    passed     97.98%
+ 563  Stylophora_C                      17.17%    passed     43.53%
+ 564  Stylophora_D                      17.17%    passed     48.41%
+ 565  Stylophora_mamillata              17.17%    passed     48.41%
+ 566  Stylophora_wellsi                 17.17%    passed     48.41%
+ 567  Stephanocyathus_moseleyanus       18.24%    passed     94.57%
+ 568  Stylophora_A                      17.17%    passed     26.06%
+ 569  Stylophora_B                      17.17%    passed     50.69%
+ 570  Fungia_fungites                   24.01%    passed     18.60%
+ 571  Halomitra_pileus                  24.01%    passed     13.49%
+ 572  Danafungia_scruposa               24.01%    passed     17.10%
+ 573  Fungiidae_YO                      24.01%    passed     15.59%
+ 574  Cycloseris_vaughani               24.16%    passed     22.71%
+ 575  Cycloseris_IR166                  24.16%    passed     22.71%
+ 576  Cycloseris_IR124                  24.16%    passed     18.50%
+ 577  Cycloseris_sinensis               24.16%    passed     18.50%
+ 578  Cycloseris_IR174                  24.16%    passed     22.71%
+ 579  Sinuorota_hexagonalis             24.16%    passed     18.97%
+ 580  Cycloseris_fragilis               24.16%    passed     18.50%
+ 581  Trochocyathus_aithoseptatus       21.12%    passed     79.32%
+ 582  Pleuractis_gravis                 25.08%    passed     18.48%
+ 583  Danafungia_horrida                24.16%    passed     19.42%
+ 584  Lithophyllon_scabra               24.16%    passed     19.42%
+ 585  Lithophyllon_concinna             24.16%    passed     17.19%
+ 586  Pleuractis_moluccensis            24.16%    passed     16.52%
+ 587  Desmophyllum_dianthus             22.34%    passed     88.85%
+ 588  Halomitra_clavator                25.08%    passed     11.94%
+ 589  Heliofungia_fralinae              25.84%    passed     12.69%
+ 590  Lithophyllon_undulatum            25.08%    passed     18.29%
+ 591  Lithophyllon_spinifer             25.08%    passed     18.58%
+ 592  Stephanocyathus_diadema           19.91%    passed     95.62%
+ 593  Ctenactis_crassa                  24.16%    passed     19.27%
+ 594  Ctenactis_albitentaculata         25.08%    passed     15.88%
+ 595  Lithophyllon_repanda              25.08%    passed     20.11%
+ 596  Polyphyllia_talpina               25.08%    passed     17.58%
+ 597  Podabacia_AG                      25.08%    passed     15.71%
+ 598  Heliofungia_actiniformis          25.84%    passed     10.74%
+ 599  Podabacia_motuporensis            25.08%    passed     14.74%
+ 600  Desmophyllum_pertusum             22.64%    passed     85.63%
+ 601  Pourtalosmilia_anthophyllites     22.80%    passed     94.04%
+ 602  Caryophyllia_calveri              22.64%    passed     84.68%
+ 603  Cycloseris_explanulata            31.61%    passed     41.92%
+ 604  Lobophyllia_sp                    27.05%    passed     81.57%
+ 605  Pocillopora_81                    31.76%    passed     77.27%
+ 606  Pocillopora_1                     31.76%    passed     78.66%
+ 607  Pocillopora_246                   31.76%    passed     79.63%
+ 608  Pocillopora_120                   31.76%    passed     80.95%
+ 609  Pocillopora_82                    31.76%    passed     80.95%
+ 610  Pocillopora_80                    31.76%    passed     72.68%
+ 611  Pocillopora_27                    31.76%    passed     78.91%
+ 612  Pocillopora_17                    31.76%    passed     72.68%
+ 613  Psammocora_albopicta              31.61%    passed     27.89%
+ 614  Anomastrea_irregularis            31.61%    passed     38.45%
+ 615  Pocillopora_254                   31.76%    passed     78.10%
+ 616  Pocillopora_111                   31.76%    passed     78.66%
+ 617  Pocillopora_98                    31.76%    passed     83.88%
+ 618  Pocillopora_79                    31.76%    passed     68.12%
+ 619  Pocillopora_29                    31.76%    passed     76.59%
+ 620  Pocillopora_12                    31.76%    passed     87.91%
+ 621  Pocillopora_194                   31.76%    passed     79.80%
+ 622  Pocillopora_36                    36.78%    passed     93.36%
+ 623  Psammocora_digitata               31.61%    passed     27.70%
+ 624  Pocillopora_116                   31.76%    passed     63.62%
+ 625  Pocillopora_91                    31.76%    passed     63.62%
+ 626  Pocillopora_87                    31.76%    passed     82.26%
+ 627  Pocillopora_97                    31.76%    passed     78.91%
+ 628  Pocillopora_83                    31.76%    passed     75.91%
+ 629  Pocillopora_76                    31.76%    passed     79.49%
+ 630  Orbicella_franksi                 35.26%    passed     59.50%
+ 631  Pocillopora_85                    31.76%    passed     83.10%
+ 632  Pocillopora_142                   31.76%    passed     93.68%
+ 633  Mussismilia_hispida               37.23%    passed     73.20%
+ 634  Scleractinia_BCnid2010            17.02%    failed      0.00%
+ 635  Goniastrea_minuta                 85.41%    passed     77.32%
+WARNING: 1 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                              8.79%  4 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: Acropora_speciosa is identical to Acropora_IP0357 but kept for subsequent analysis
+NOTE: Acropora_willisae is identical to Acropora_BRI but kept for subsequent analysis
+NOTE: Acropora_BC1 is identical to Acropora_robusta but kept for subsequent analysis
+NOTE: Montipora_foliosa is identical to Montipora_efflorescens but kept for subsequent analysis
+NOTE: Montipora_PM13 is identical to Montipora_DM26 but kept for subsequent analysis
+NOTE: Montipora_DM21 is identical to Montipora_DM25 but kept for subsequent analysis
+NOTE: Montipora_flabellata is identical to Montipora_turgescens but kept for subsequent analysis
+NOTE: Alveopora_excelsa is identical to Alveopora_japonica but kept for subsequent analysis
+NOTE: Pachyseris_speciosa is identical to Pachyseris_YYC but kept for subsequent analysis
+NOTE: Porites_evermanni is identical to Porites_lutea but kept for subsequent analysis
+NOTE: Leptoseris_scabra is identical to Leptoseris_A108 but kept for subsequent analysis
+NOTE: Porites_Porit3730NA is identical to Porites_Porit3917NA but kept for subsequent analysis
+NOTE: Porites_Porit2832P is identical to Porites_Porit3824P but kept for subsequent analysis
+NOTE: Porites_Porit1920P is identical to Porites_Porit940P but kept for subsequent analysis
+NOTE: Montipora_XNL is identical to Platygyra_daedalea but kept for subsequent analysis
+NOTE: Platygyra_pini is identical to Platygyra_crosslandi but kept for subsequent analysis
+NOTE: Oculina_KL is identical to Oculina_patagonica but kept for subsequent analysis
+NOTE: Hydnophora_microconos is identical to Hydnophora_pilosa but kept for subsequent analysis
+NOTE: Cyphastrea_chalcidicum is identical to Favites_pentagona but kept for subsequent analysis
+NOTE: Micromussa_multipunctata is identical to Micromussa_amakusensis but kept for subsequent analysis
+NOTE: Favia_WF143 is identical to Coelastrea_aspera but kept for subsequent analysis
+NOTE: Leptoria_irregularis is identical to Leptoria_phrygia but kept for subsequent analysis
+NOTE: Favites_valenciennesi is identical to Astrea_annuligera but kept for subsequent analysis
+NOTE: Merulina_ampliata is identical to Merulina_scabricula but kept for subsequent analysis
+NOTE: Goniastrea_stelligera is identical to Goniastrea_retiformis but kept for subsequent analysis
+NOTE: Favites_colemani is identical to Favites_magnistellata but kept for subsequent analysis
+NOTE: Plerogyra_sinuosa is identical to Physogyra_lichtensteini but kept for subsequent analysis
+NOTE: Oxypora_echinata is identical to Oxypora_crassispinosa but kept for subsequent analysis
+NOTE: Oxypora_glabra is identical to Echinophyllia_tarae but kept for subsequent analysis
+NOTE: Stylophora_pistillata is identical to Stylophora_PdCOISy3 but kept for subsequent analysis
+NOTE: Astrea_devantieri is identical to Paramontastraea_peresi but kept for subsequent analysis
+NOTE: Physophyllia_ayleni is identical to Pectinia_lactuca but kept for subsequent analysis
+NOTE: Pocillopora_verrucosa is identical to Pocillopora_damicornis but kept for subsequent analysis
+NOTE: Mycedium_elephantotus is identical to Mycedium_robokaki but kept for subsequent analysis
+NOTE: Favia_B52 is identical to Favia_B22 but kept for subsequent analysis
+NOTE: Stylophora_subseriata is identical to Stylophora_madagascarensis but kept for subsequent analysis
+NOTE: Stylophora_mamillata is identical to Stylophora_D but kept for subsequent analysis
+NOTE: Cycloseris_IR166 is identical to Cycloseris_vaughani but kept for subsequent analysis
+NOTE: Cycloseris_sinensis is identical to Cycloseris_IR124 but kept for subsequent analysis
+NOTE: Lithophyllon_scabra is identical to Danafungia_horrida but kept for subsequent analysis
+NOTE: 90 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: Acropora_samoensis (identical to Acropora_IP0357) is ignored but added at the end
+NOTE: Acropora_pulchra (identical to Acropora_IP0357) is ignored but added at the end
+NOTE: Acropora_paniculata (identical to Acropora_IP0357) is ignored but added at the end
+NOTE: Acropora_millepora (identical to Acropora_IP0357) is ignored but added at the end
+NOTE: Acropora_microclados (identical to Acropora_IP0357) is ignored but added at the end
+NOTE: Acropora_gemmifera (identical to Acropora_IP0357) is ignored but added at the end
+NOTE: Acropora_donei (identical to Acropora_IP0357) is ignored but added at the end
+NOTE: Acropora_anthocercis (identical to Acropora_IP0357) is ignored but added at the end
+NOTE: Acropora_hyacinthus (identical to Acropora_IP0357) is ignored but added at the end
+NOTE: Acropora_digitifera (identical to Acropora_IP0357) is ignored but added at the end
+NOTE: Acropora_valida (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_divaricata (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_spicifera (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_solitaryensis (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_selago (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_secale (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_nasuta (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_nana (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_muricata (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_loripes (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_lokani (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_indonesia (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_horrida (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_florida (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_desalwii (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_dendrum (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_clathrata (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_aspera (identical to Acropora_BRI) is ignored but added at the end
+NOTE: Acropora_branchi (identical to Acropora_robusta) is ignored but added at the end
+NOTE: Acropora_arabensis (identical to Acropora_robusta) is ignored but added at the end
+NOTE: Galaxea_fascicularis (identical to Acropora_robusta) is ignored but added at the end
+NOTE: Montipora_foveolata (identical to Montipora_efflorescens) is ignored but added at the end
+NOTE: Montipora_DM22 (identical to Montipora_efflorescens) is ignored but added at the end
+NOTE: Montipora_DM13 (identical to Montipora_efflorescens) is ignored but added at the end
+NOTE: Montipora_PM07 (identical to Montipora_efflorescens) is ignored but added at the end
+NOTE: Montipora_fragilis (identical to Montipora_efflorescens) is ignored but added at the end
+NOTE: Montipora_PM01 (identical to Montipora_DM26) is ignored but added at the end
+NOTE: Montipora_DM20 (identical to Montipora_DM25) is ignored but added at the end
+NOTE: Montipora_DM18 (identical to Montipora_DM25) is ignored but added at the end
+NOTE: Montipora_DM14 (identical to Montipora_DM25) is ignored but added at the end
+NOTE: Montipora_DM12 (identical to Montipora_DM25) is ignored but added at the end
+NOTE: Porites_annae (identical to Porites_lutea) is ignored but added at the end
+NOTE: Leptoseris_explanata (identical to Leptoseris_A108) is ignored but added at the end
+NOTE: Pavona_maldivensis (identical to Leptoseris_A108) is ignored but added at the end
+NOTE: Porites_Porit3317NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit3224P (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit2739NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit2523NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit2438P (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit2325NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit2090NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit2010NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit1923NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit1739NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit1513NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit1319NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit2070NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit1133NA (identical to Porites_Porit3917NA) is ignored but added at the end
+NOTE: Porites_Porit2622P (identical to Porites_Porit3824P) is ignored but added at the end
+NOTE: Porites_Porit2220P (identical to Porites_Porit3824P) is ignored but added at the end
+NOTE: Porites_Porit2100P (identical to Porites_Porit3824P) is ignored but added at the end
+NOTE: Porites_Porit2060P (identical to Porites_Porit3824P) is ignored but added at the end
+NOTE: Porites_Porit1614P (identical to Porites_Porit3824P) is ignored but added at the end
+NOTE: Porites_Porit1428P (identical to Porites_Porit3824P) is ignored but added at the end
+NOTE: Porites_Porit2014P (identical to Porites_Porit3824P) is ignored but added at the end
+NOTE: Porites_Porit1011P (identical to Porites_Porit3824P) is ignored but added at the end
+NOTE: Platygyra_sinensis (identical to Platygyra_crosslandi) is ignored but added at the end
+NOTE: Platygyra_contorta (identical to Platygyra_crosslandi) is ignored but added at the end
+NOTE: Platygyra_ryukyuensis (identical to Platygyra_crosslandi) is ignored but added at the end
+NOTE: Favites_stylifera (identical to Platygyra_crosslandi) is ignored but added at the end
+NOTE: Oculina_diffusa (identical to Oculina_patagonica) is ignored but added at the end
+NOTE: Dipsastraea_matthaii (identical to Coelastrea_aspera) is ignored but added at the end
+NOTE: Dipsastraea_favus (identical to Coelastrea_aspera) is ignored but added at the end
+NOTE: Dipsastraea_rosaria (identical to Coelastrea_aspera) is ignored but added at the end
+NOTE: Favites_flexuosa (identical to Favites_magnistellata) is ignored but added at the end
+NOTE: Favites_rotundata (identical to Favites_magnistellata) is ignored but added at the end
+NOTE: Echinophyllia_orpheensis (identical to Echinophyllia_tarae) is ignored but added at the end
+NOTE: Echinophyllia_M908 (identical to Echinophyllia_tarae) is ignored but added at the end
+NOTE: Echinophyllia_M906 (identical to Echinophyllia_tarae) is ignored but added at the end
+NOTE: Echinophyllia_M905 (identical to Echinophyllia_tarae) is ignored but added at the end
+NOTE: Echinophyllia_MNHN (identical to Echinophyllia_tarae) is ignored but added at the end
+NOTE: Echinophyllia_echinoporoides (identical to Echinophyllia_tarae) is ignored but added at the end
+NOTE: Echinophyllia_SA778 (identical to Echinophyllia_tarae) is ignored but added at the end
+NOTE: Echinophyllia_SA1192 (identical to Echinophyllia_tarae) is ignored but added at the end
+NOTE: Echinophyllia_SA1126 (identical to Echinophyllia_tarae) is ignored but added at the end
+NOTE: Dipsastraea_lizardensis (identical to Favia_B22) is ignored but added at the end
+NOTE: Favia_B23 (identical to Favia_B22) is ignored but added at the end
+NOTE: Stylophora_wellsi (identical to Stylophora_D) is ignored but added at the end
+NOTE: Cycloseris_IR174 (identical to Cycloseris_vaughani) is ignored but added at the end
+NOTE: Cycloseris_fragilis (identical to Cycloseris_IR124) is ignored but added at the end
+
+For your convenience alignment with unique sequences printed to alignment.co1.cat.fasta.uniqueseq.phy
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.143 seconds
+NOTE: ModelFinder requires 94 MB RAM!
+ModelFinder will test 286 DNA models (sample size: 658) ...
+ No. Model         -LnL         df  AIC          AICc         BIC
+Measuring multi-threading efficiency up to 20 CPU cores
+Increase to 10 rounds for branch lengths
+32 trees examined
+Threads: 1 / Time: 20.506 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -127158
+Threads: 2 / Time: 16.773 sec / Speedup: 1.223 / Efficiency: 61% / LogL: -127158
+Threads: 3 / Time: 15.657 sec / Speedup: 1.310 / Efficiency: 44% / LogL: -127158
+BEST NUMBER OF THREADS: 2
+
+  1  JC            17205.712    1087 36585.424    2401897.424  41465.190
+  2  JC+I          16468.111    1088 35112.222    2404776.222  39996.477
+  3  JC+G4         15713.273    1088 33602.547    2403266.547  38486.802
+  4  JC+I+G4       15704.208    1089 33586.417    2407606.417  38475.161
+  5  JC+R2         15834.596    1089 33847.192    2407867.192  38735.937
+  6  JC+R3         15706.951    1091 33595.901    2416339.901  38493.624
+  7  JC+R4         15686.891    1093 33559.782    2425043.782  38466.483
+  8  JC+R5         15677.032    1095 33544.064    2433784.064  38459.743
+  9  JC+R6         15669.969    1097 33533.938    2442545.938  38458.596
+ 10  JC+R7         15666.496    1099 33530.993    2451330.993  38464.629
+ 14  F81+F         17229.088    1090 36638.176    2415018.176  41531.409
+ 15  F81+F+I       16486.942    1091 35155.885    2417899.885  40053.607
+ 16  F81+F+G4      15697.751    1091 33577.502    2416321.502  38475.225
+ 17  F81+F+I+G4    15691.437    1092 33566.874    2420678.874  38469.086
+ 18  F81+F+R2      15815.352    1092 33814.704    2420926.704  38716.916
+ 19  F81+F+R3      15696.500    1094 33581.001    2429441.001  38492.191
+ 20  F81+F+R4      15679.893    1096 33551.786    2438175.786  38471.955
+ 21  F81+F+R5      15670.237    1098 33536.475    2446940.475  38465.622
+ 22  F81+F+R6      15663.315    1100 33526.630    2455726.630  38464.755
+ 23  F81+F+R7      15659.980    1102 33523.961    2464535.961  38471.065
+ 27  K2P           16768.863    1088 35713.725    2405377.725  40597.980
+ 28  K2P+I         16021.005    1089 34220.010    2408240.010  39108.755
+ 29  K2P+G4        15239.108    1089 32656.216    2406676.216  37544.960
+ 30  K2P+I+G4      15229.254    1090 32638.509    2411018.509  37531.742
+ 31  K2P+R2        15363.664    1090 32907.328    2411287.328  37800.562
+ 32  K2P+R3        15234.368    1092 32652.737    2419764.737  37554.949
+ 33  K2P+R4        15214.031    1094 32616.062    2428476.062  37527.253
+ 34  K2P+R5        15202.688    1096 32597.377    2437221.377  37517.545
+ 35  K2P+R6        15194.083    1098 32584.165    2445988.165  37513.312
+ 36  K2P+R7        15189.606    1100 32579.213    2454779.213  37517.338
+ 40  HKY+F         16728.007    1091 35638.014    2418382.014  40535.737
+ 41  HKY+F+I       15961.272    1092 34106.544    2421218.544  39008.755
+ 42  HKY+F+G4      15120.031    1092 32424.061    2419536.061  37326.273
+ 43  HKY+F+I+G4    15110.009    1093 32406.019    2423890.019  37312.720
+ 44  HKY+F+R2      15238.778    1093 32663.556    2424147.556  37570.257
+ 45  HKY+F+R3      15122.898    1095 32435.796    2432675.796  37351.476
+ 46  HKY+F+R4      15105.584    1097 32405.168    2441417.168  37329.826
+ 47  HKY+F+R5      15094.157    1099 32386.313    2450186.313  37319.950
+ 48  HKY+F+R6      15085.293    1101 32372.587    2458976.587  37315.201
+ 49  HKY+F+R7      15080.324    1103 32366.649    2467790.649  37318.242
+ 53  TNe           16765.394    1089 35708.788    2409728.788  40597.533
+ 54  TNe+I         16020.359    1090 34220.719    2412600.719  39113.952
+ 55  TNe+G4        15238.292    1090 32656.584    2411036.584  37549.817
+ 56  TNe+I+G4      15228.697    1091 32639.394    2415383.394  37537.116
+ 57  TNe+R2        15361.688    1091 32905.375    2415649.375  37803.098
+ 58  TNe+R3        15233.676    1093 32653.353    2424137.353  37560.054
+ 59  TNe+R4        15213.479    1095 32616.958    2432856.958  37532.637
+ 60  TNe+R5        15202.092    1097 32598.184    2441610.184  37522.842
+ 61  TNe+R6        15193.436    1099 32584.872    2450384.872  37518.508
+ 62  TNe+R7        15189.049    1101 32580.098    2459184.098  37522.713
+ 66  TN+F          16720.838    1092 35625.676    2422737.676  40527.888
+ 67  TN+F+I        15959.407    1093 34104.813    2425588.813  39011.514
+ 68  TN+F+G4       15117.226    1093 32420.452    2423904.452  37327.153
+ 69  TN+F+I+G4     15108.575    1094 32405.150    2428265.150  37316.340
+ 70  TN+F+R2       15236.518    1094 32661.035    2428521.035  37572.225
+ 71  TN+F+R3       15120.788    1096 32433.575    2437057.575  37353.744
+ 72  TN+F+R4       15103.111    1098 32402.221    2445806.221  37331.368
+ 73  TN+F+R5       15091.769    1100 32383.539    2454583.539  37321.664
+ 74  TN+F+R6       15083.039    1102 32370.079    2463382.079  37317.183
+ 75  TN+F+R7       15078.415    1104 32364.830    2472204.830  37320.912
+ 79  K3P           16764.516    1089 35707.031    2409727.031  40595.776
+ 80  K3P+I         16015.295    1090 34210.590    2412590.590  39103.823
+ 81  K3P+G4        15232.033    1090 32644.065    2411024.065  37537.299
+ 82  K3P+I+G4      15222.091    1091 32626.182    2415370.182  37523.905
+ 83  K3P+R2        15356.474    1091 32894.948    2415638.948  37792.670
+ 84  K3P+R3        15227.684    1093 32641.369    2424125.369  37548.070
+ 85  K3P+R4        15207.419    1095 32604.838    2432844.838  37520.517
+ 86  K3P+R5        15195.940    1097 32585.881    2441597.881  37510.539
+ 87  K3P+R6        15187.127    1099 32572.255    2450372.255  37505.891
+ 88  K3P+R7        15182.767    1101 32567.535    2459171.535  37510.149
+ 92  K3Pu+F        16724.477    1092 35632.954    2422744.954  40535.166
+ 93  K3Pu+F+I      15957.297    1093 34100.594    2425584.594  39007.295
+ 94  K3Pu+F+G4     15112.545    1093 32411.090    2423895.090  37317.791
+ 95  K3Pu+F+I+G4   15102.611    1094 32393.223    2428253.223  37304.413
+ 96  K3Pu+F+R2     15230.507    1094 32649.014    2428509.014  37560.204
+ 97  K3Pu+F+R3     15115.579    1096 32423.157    2437047.157  37343.326
+ 98  K3Pu+F+R4     15098.079    1098 32392.158    2445796.158  37321.305
+ 99  K3Pu+F+R5     15086.514    1100 32373.029    2454573.029  37311.154
+100  K3Pu+F+R6     15077.453    1102 32358.906    2463370.906  37306.010
+101  K3Pu+F+R7     15072.650    1104 32353.300    2472193.300  37309.383
+105  TPM2+F        16726.747    1092 35637.495    2422749.495  40539.707
+106  TPM2+F+I      15959.327    1093 34104.654    2425588.654  39011.355
+107  TPM2+F+G4     15120.127    1093 32426.253    2423910.253  37332.954
+108  TPM2+F+I+G4   15110.045    1094 32408.090    2428268.090  37319.280
+109  TPM2+F+R2     15238.866    1094 32665.732    2428525.732  37576.922
+110  TPM2+F+R3     15123.047    1096 32438.094    2437062.094  37358.263
+111  TPM2+F+R4     15105.690    1098 32407.380    2445811.380  37336.527
+112  TPM2+F+R5     15094.224    1100 32388.448    2454588.448  37326.574
+113  TPM2+F+R6     15085.208    1102 32374.416    2463386.416  37321.520
+114  TPM2+F+R7     15080.396    1104 32368.792    2472208.792  37324.875
+118  TPM2u+F       16726.771    1092 35637.542    2422749.542  40539.754
+119  TPM2u+F+I     15959.350    1093 34104.700    2425588.700  39011.401
+120  TPM2u+F+G4    15120.146    1093 32426.292    2423910.292  37332.993
+121  TPM2u+F+I+G4  15110.065    1094 32408.130    2428268.130  37319.320
+122  TPM2u+F+R2    15238.876    1094 32665.752    2428525.752  37576.942
+123  TPM2u+F+R3    15123.068    1096 32438.136    2437062.136  37358.305
+124  TPM2u+F+R4    15105.705    1098 32407.410    2445811.410  37336.557
+125  TPM2u+F+R5    15094.237    1100 32388.474    2454588.474  37326.599
+126  TPM2u+F+R6    15085.201    1102 32374.403    2463386.403  37321.507
+127  TPM2u+F+R7    15080.396    1104 32368.791    2472208.791  37324.873
+131  TPM3+F        16728.238    1092 35640.475    2422752.475  40542.687
+132  TPM3+F+I      15961.430    1093 34108.860    2425592.860  39015.561
+133  TPM3+F+G4     15113.454    1093 32412.908    2423896.908  37319.609
+134  TPM3+F+I+G4   15102.903    1094 32393.806    2428253.806  37304.996
+135  TPM3+F+R2     15231.869    1094 32651.737    2428511.737  37562.927
+136  TPM3+F+R3     15117.289    1096 32426.577    2437050.577  37346.746
+137  TPM3+F+R4     15100.091    1098 32396.181    2445800.181  37325.328
+138  TPM3+F+R5     15088.548    1100 32377.095    2454577.095  37315.221
+139  TPM3+F+R6     15079.450    1102 32362.899    2463374.899  37310.003
+140  TPM3+F+R7     15074.564    1104 32357.128    2472197.128  37313.210
+144  TPM3u+F       16728.281    1092 35640.561    2422752.561  40542.773
+145  TPM3u+F+I     15961.473    1093 34108.946    2425592.946  39015.647
+146  TPM3u+F+G4    15113.489    1093 32412.979    2423896.979  37319.680
+147  TPM3u+F+I+G4  15102.939    1094 32393.878    2428253.878  37305.068
+148  TPM3u+F+R2    15231.883    1094 32651.767    2428511.767  37562.957
+149  TPM3u+F+R3    15117.320    1096 32426.640    2437050.640  37346.809
+150  TPM3u+F+R4    15100.112    1098 32396.224    2445800.224  37325.371
+151  TPM3u+F+R5    15088.563    1100 32377.126    2454577.126  37315.252
+152  TPM3u+F+R6    15079.455    1102 32362.911    2463374.911  37310.015
+153  TPM3u+F+R7    15074.564    1104 32357.128    2472197.128  37313.211
+157  TIMe          16761.035    1090 35702.071    2414082.071  40595.304
+158  TIMe+I        16014.648    1091 34211.296    2416955.296  39109.018
+159  TIMe+G4       15231.199    1091 32644.398    2415388.398  37542.121
+160  TIMe+I+G4     15221.519    1092 32627.039    2419739.039  37529.250
+161  TIMe+R2       15354.493    1092 32892.986    2420004.986  37795.197
+162  TIMe+R3       15226.986    1094 32641.971    2428501.971  37553.162
+163  TIMe+R4       15206.804    1096 32605.608    2437229.608  37525.776
+164  TIMe+R5       15195.335    1098 32586.669    2445990.669  37515.816
+165  TIMe+R6       15186.510    1100 32573.019    2454773.019  37511.145
+166  TIMe+R7       15182.255    1102 32568.511    2463580.511  37515.615
+170  TIM+F         16717.258    1093 35620.515    2427104.515  40527.216
+171  TIM+F+I       15955.398    1094 34098.796    2429958.796  39009.986
+172  TIM+F+G4      15109.794    1094 32407.589    2428267.589  37318.779
+173  TIM+F+I+G4    15101.149    1095 32392.298    2432632.298  37307.977
+174  TIM+F+R2      15228.317    1095 32646.633    2432886.633  37562.312
+175  TIM+F+R3      15113.483    1097 32420.966    2441432.966  37345.624
+176  TIM+F+R4      15095.628    1099 32389.255    2450189.255  37322.892
+177  TIM+F+R5      15084.163    1101 32370.325    2458974.325  37312.940
+178  TIM+F+R6      15075.200    1103 32356.400    2467780.400  37307.993
+179  TIM+F+R7      15070.693    1105 32351.387    2476611.387  37311.958
+183  TIM2e         16764.795    1090 35709.590    2414089.590  40602.823
+184  TIM2e+I       16019.238    1091 34220.476    2416964.476  39118.199
+185  TIM2e+G4      15238.382    1091 32658.763    2415402.763  37556.486
+186  TIM2e+I+G4    15228.775    1092 32641.549    2419753.549  37543.761
+187  TIM2e+R2      15361.689    1092 32907.378    2420019.378  37809.589
+188  TIM2e+R3      15233.766    1094 32655.532    2428515.532  37566.723
+189  TIM2e+R4      15213.561    1096 32619.121    2437243.121  37539.290
+190  TIM2e+R5      15202.163    1098 32600.326    2446004.326  37529.473
+191  TIM2e+R6      15193.422    1100 32586.844    2454786.844  37524.969
+192  TIM2e+R7      15189.318    1102 32582.636    2463594.636  37529.740
+196  TIM2+F        16719.452    1093 35624.903    2427108.903  40531.604
+197  TIM2+F+I      15957.325    1094 34102.650    2429962.650  39013.840
+198  TIM2+F+G4     15117.147    1094 32422.294    2428282.294  37333.485
+199  TIM2+F+I+G4   15108.468    1095 32406.937    2432646.937  37322.616
+200  TIM2+F+R2     15236.573    1095 32663.146    2432903.146  37578.826
+201  TIM2+F+R3     15120.818    1097 32435.636    2441447.636  37360.293
+202  TIM2+F+R4     15103.156    1099 32404.312    2450204.312  37337.948
+203  TIM2+F+R5     15091.830    1101 32385.659    2458989.659  37328.274
+204  TIM2+F+R6     15083.031    1103 32372.062    2467796.062  37323.655
+205  TIM2+F+R7     15078.581    1105 32367.163    2476627.163  37327.734
+209  TIM3e         16743.515    1090 35667.030    2414047.030  40560.263
+210  TIM3e+I       16002.248    1091 34186.496    2416930.496  39084.219
+211  TIM3e+G4      15230.215    1091 32642.431    2415386.431  37540.153
+212  TIM3e+I+G4    15219.804    1092 32623.608    2419735.608  37525.820
+213  TIM3e+R2      15355.020    1092 32894.040    2420006.040  37796.252
+214  TIM3e+R3      15223.238    1094 32634.475    2428494.475  37545.666
+215  TIM3e+R4      15203.712    1096 32599.424    2437223.424  37519.592
+216  TIM3e+R5      15192.366    1098 32580.731    2445984.731  37509.878
+217  TIM3e+R6      15183.736    1100 32567.471    2454767.471  37505.596
+218  TIM3e+R7      15179.724    1102 32563.448    2463575.448  37510.552
+222  TIM3+F        16720.865    1093 35627.730    2427111.730  40534.431
+223  TIM3+F+I      15959.365    1094 34106.730    2429966.730  39017.921
+224  TIM3+F+G4     15110.636    1094 32409.272    2428269.272  37320.462
+225  TIM3+F+I+G4   15101.414    1095 32392.829    2432632.829  37308.508
+226  TIM3+F+R2     15229.417    1095 32648.834    2432888.834  37564.513
+227  TIM3+F+R3     15113.486    1097 32420.972    2441432.972  37345.630
+228  TIM3+F+R4     15097.580    1099 32393.160    2450193.160  37326.796
+229  TIM3+F+R5     15086.180    1101 32374.360    2458978.360  37316.975
+230  TIM3+F+R6     15077.337    1103 32360.675    2467784.675  37312.268
+231  TIM3+F+R7     15073.114    1105 32356.228    2476616.228  37316.799
+235  TVMe          16739.369    1091 35660.739    2418404.739  40558.461
+236  TVMe+I        15993.224    1092 34170.448    2421282.448  39072.660
+237  TVMe+G4       15222.364    1092 32628.727    2419740.727  37530.939
+238  TVMe+I+G4     15211.326    1093 32608.652    2424092.652  37515.353
+239  TVMe+R2       15348.855    1093 32883.709    2424367.709  37790.410
+240  TVMe+R3       15215.665    1095 32621.330    2432861.330  37537.009
+241  TVMe+R4       15196.118    1097 32586.237    2441598.237  37510.895
+242  TVMe+R5       15184.681    1099 32567.362    2450367.362  37500.999
+243  TVMe+R6       15175.902    1101 32553.803    2459157.803  37496.418
+244  TVMe+R7       15171.960    1103 32549.921    2467973.921  37501.514
+248  TVM+F         16719.802    1094 35627.603    2431487.603  40538.794
+249  TVM+F+I       15951.122    1095 34092.245    2434332.245  39007.924
+250  TVM+F+G4      15104.081    1095 32398.162    2432638.162  37313.841
+251  TVM+F+I+G4    15093.364    1096 32378.727    2437002.727  37298.896
+252  TVM+F+R2      15222.941    1096 32637.881    2437261.881  37558.050
+253  TVM+F+R3      15106.862    1098 32409.724    2445813.724  37338.871
+254  TVM+F+R4      15091.356    1100 32382.712    2454582.712  37320.837
+255  TVM+F+R5      15079.802    1102 32363.604    2463375.604  37310.707
+256  TVM+F+R6      15070.647    1104 32349.294    2472189.294  37305.376
+257  TVM+F+R7      15066.230    1106 32344.461    2481028.461  37309.522
+261  SYM           16735.824    1092 35655.649    2422767.649  40557.861
+262  SYM+I         15992.461    1093 34170.922    2425654.922  39077.623
+263  SYM+G4        15221.780    1093 32629.560    2424113.560  37536.261
+264  SYM+I+G4      15210.975    1094 32609.949    2428469.949  37521.140
+265  SYM+R2        15346.911    1094 32881.822    2428741.822  37793.012
+266  SYM+R3        15215.211    1096 32622.421    2437246.421  37542.590
+267  SYM+R4        15195.733    1098 32587.466    2445991.466  37516.613
+268  SYM+R5        15184.306    1100 32568.611    2454768.611  37506.737
+269  SYM+R6        15175.527    1102 32555.055    2463567.055  37502.158
+270  SYM+R7        15171.732    1104 32551.464    2472391.464  37507.546
+274  GTR+F         16712.683    1095 35615.367    2435855.367  40531.046
+275  GTR+F+I       15949.302    1096 34090.603    2438714.603  39010.772
+276  GTR+F+G4      15101.350    1096 32394.700    2437018.700  37314.868
+277  GTR+F+I+G4    15092.021    1097 32378.041    2441390.041  37302.699
+278  GTR+F+R2      15220.586    1097 32635.172    2441647.172  37559.830
+279  GTR+F+R3      15104.847    1099 32407.694    2450207.694  37341.330
+280  GTR+F+R4      15088.912    1101 32379.824    2458983.824  37322.439
+281  GTR+F+R5      15077.419    1103 32360.838    2467784.838  37312.431
+282  GTR+F+R6      15068.475    1105 32346.951    2476606.951  37307.522
+283  GTR+F+R7      15064.508    1107 32343.016    2485455.016  37312.566
+Akaike Information Criterion:           GTR+F+R7
+Corrected Akaike Information Criterion: JC
+Bayesian Information Criterion:         TVM+F+I+G4
+Best-fit model: TVM+F+I+G4 chosen according to BIC
+
+All model information printed to alignment.co1.cat.fasta.model.gz
+CPU time for ModelFinder: 1278.716 seconds (0h:21m:18s)
+Wall-clock time for ModelFinder: 649.811 seconds (0h:10m:49s)
+Generating 1000 samples for ultrafast bootstrap (seed: 727301)...
+
+NOTE: 39 MB RAM (0 GB) is required!
+Measuring multi-threading efficiency up to 20 CPU cores
+Increase to 10 rounds for branch lengths
+16 trees examined
+Threads: 1 / Time: 20.366 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -85989
+Threads: 2 / Time: 14.235 sec / Speedup: 1.431 / Efficiency: 72% / LogL: -85989
+Threads: 3 / Time: 13.183 sec / Speedup: 1.545 / Efficiency: 51% / LogL: -85989
+Threads: 4 / Time: 11.882 sec / Speedup: 1.714 / Efficiency: 43% / LogL: -85989
+BEST NUMBER OF THREADS: 3
+
+Estimate model parameters (epsilon = 0.100)
+Thoroughly optimizing +I+G parameters from 10 start values...
+Init pinv, alpha: 0.000, 1.000 / Estimate: 0.000, 0.399 / LogL: -15104.066
+Init pinv, alpha: 0.038, 1.000 / Estimate: 0.169, 0.568 / LogL: -15093.599
+Init pinv, alpha: 0.076, 1.000 / Estimate: 0.171, 0.571 / LogL: -15093.560
+Init pinv, alpha: 0.114, 1.000 / Estimate: 0.171, 0.572 / LogL: -15093.568
+Init pinv, alpha: 0.153, 1.000 / Estimate: 0.178, 0.584 / LogL: -15093.453
+Init pinv, alpha: 0.191, 1.000 / Estimate: 0.200, 0.620 / LogL: -15093.383
+Init pinv, alpha: 0.229, 1.000 / Estimate: 0.208, 0.635 / LogL: -15093.497
+Init pinv, alpha: 0.267, 1.000 / Estimate: 0.210, 0.638 / LogL: -15093.553
+Init pinv, alpha: 0.305, 1.000 / Estimate: 0.209, 0.636 / LogL: -15093.556
+Init pinv, alpha: 0.343, 1.000 / Estimate: 0.208, 0.634 / LogL: -15093.557
+Optimal pinv,alpha: 0.200, 0.620 / LogL: -15093.383
+
+Parameters optimization took 28.359 sec
+Computing ML distances based on estimated model parameters... 4.045 sec
+WARNING: Some pairwise ML distances are too long (saturated)
+Computing BIONJ tree...
+0.398 seconds
+Log-likelihood of BIONJ tree: -15550.119
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 13.728 second
+Computing log-likelihood of 98 initial trees ... 19.440 seconds
+Current best score: -15057.728
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -15034.335
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 2: -15028.744
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 8: -15024.940
+Iteration 10 / LogL: -15035.432 / Time: 0h:3m:2s
+Iteration 20 / LogL: -15059.387 / Time: 0h:3m:59s
+Finish initializing candidate tree set (20)
+Current best tree score: -15024.940 / CPU time: 149.436
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 25: -15024.010
+Iteration 30 / LogL: -15034.315 / Time: 0h:4m:53s (0h:16m:1s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 32: -15023.651
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 33: -15019.518
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 38: -15019.110
+Iteration 40 / LogL: -15102.311 / Time: 0h:5m:47s (0h:14m:33s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 43: -15016.923
+Iteration 50 / LogL: -15018.585 / Time: 0h:6m:39s (0h:12m:37s left)
+Log-likelihood cutoff on original alignment: -15090.053
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 56: -15015.625
+Iteration 60 / LogL: -15050.397 / Time: 0h:7m:34s (0h:12m:19s left)
+Iteration 70 / LogL: -15051.199 / Time: 0h:8m:34s (0h:10m:40s left)
+Iteration 80 / LogL: -15019.054 / Time: 0h:9m:38s (0h:9m:16s left)
+Iteration 90 / LogL: -15026.381 / Time: 0h:10m:41s (0h:7m:55s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 98: -15014.937
+Iteration 100 / LogL: -15026.802 / Time: 0h:11m:47s (0h:11m:40s left)
+Log-likelihood cutoff on original alignment: -15090.053
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.995
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 105: -15013.340
+Iteration 110 / LogL: -15049.228 / Time: 0h:12m:53s (0h:11m:14s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 119: -15011.981
+Iteration 120 / LogL: -15052.976 / Time: 0h:13m:57s (0h:11m:36s left)
+Iteration 130 / LogL: -15056.674 / Time: 0h:15m:1s (0h:10m:22s left)
+Iteration 140 / LogL: -15043.583 / Time: 0h:16m:3s (0h:9m:7s left)
+Iteration 150 / LogL: -15017.898 / Time: 0h:17m:8s (0h:7m:56s left)
+Log-likelihood cutoff on original alignment: -15090.053
+Iteration 160 / LogL: -15024.718 / Time: 0h:18m:17s (0h:6m:47s left)
+Iteration 170 / LogL: -15160.043 / Time: 0h:19m:15s (0h:5m:34s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 175: -15011.645
+Iteration 180 / LogL: -15032.695 / Time: 0h:20m:12s (0h:10m:43s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 181: -15011.226
+Iteration 190 / LogL: -15014.284 / Time: 0h:21m:11s (0h:10m:12s left)
+Iteration 200 / LogL: -15039.349 / Time: 0h:22m:15s (0h:9m:3s left)
+Log-likelihood cutoff on original alignment: -15090.053
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.995
+Iteration 210 / LogL: -15042.888 / Time: 0h:23m:20s (0h:10m:2s left)
+Iteration 220 / LogL: -15030.746 / Time: 0h:24m:23s (0h:8m:54s left)
+Iteration 230 / LogL: -15012.127 / Time: 0h:25m:26s (0h:7m:46s left)
+Iteration 240 / LogL: -15012.836 / Time: 0h:26m:26s (0h:6m:38s left)
+Iteration 250 / LogL: -15015.213 / Time: 0h:27m:26s (0h:5m:30s left)
+Log-likelihood cutoff on original alignment: -15090.053
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 257: -15002.122
+Iteration 260 / LogL: -15043.152 / Time: 0h:28m:33s (0h:10m:41s left)
+Iteration 270 / LogL: -15047.685 / Time: 0h:29m:36s (0h:9m:34s left)
+Iteration 280 / LogL: -15020.768 / Time: 0h:30m:38s (0h:8m:27s left)
+Iteration 290 / LogL: -15012.773 / Time: 0h:31m:40s (0h:7m:20s left)
+Iteration 300 / LogL: -15012.522 / Time: 0h:32m:40s (0h:6m:13s left)
+Log-likelihood cutoff on original alignment: -15090.053
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.997
+Iteration 310 / LogL: -15024.945 / Time: 0h:33m:45s (0h:9m:50s left)
+Iteration 320 / LogL: -15013.671 / Time: 0h:34m:53s (0h:8m:45s left)
+Iteration 330 / LogL: -15014.879 / Time: 0h:35m:54s (0h:7m:38s left)
+Iteration 340 / LogL: -15020.534 / Time: 0h:36m:49s (0h:6m:30s left)
+Iteration 350 / LogL: -15038.111 / Time: 0h:37m:48s (0h:5m:25s left)
+Log-likelihood cutoff on original alignment: -15090.053
+TREE SEARCH COMPLETED AFTER 358 ITERATIONS / Time: 0h:38m:36s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -15002.122
+Optimal log-likelihood: -15002.120
+Rate parameters:  A-C: 1.63050  A-G: 4.52926  A-T: 0.78644  C-G: 0.92628  C-T: 4.52926  G-T: 1.00000
+Base frequencies:  A: 0.213  C: 0.169  G: 0.227  T: 0.390
+Proportion of invariable sites: 0.185
+Gamma shape alpha: 0.587
+Parameters optimization took 1 rounds (0.245 sec)
+BEST SCORE FOUND : -15002.120
+Creating bootstrap support values...
+Split supports printed to NEXUS file alignment.co1.cat.fasta.splits.nex
+Total tree length: 7.502
+
+Total number of iterations: 358
+CPU time used for tree search: 6329.004 sec (1h:45m:29s)
+Wall-clock time used for tree search: 2225.069 sec (0h:37m:5s)
+Total CPU time used: 6557.841 sec (1h:49m:17s)
+Total wall-clock time used: 2318.700 sec (0h:38m:38s)
+
+Computing bootstrap consensus tree...
+Reading input file alignment.co1.cat.fasta.splits.nex...
+545 taxa and 8157 splits.
+Consensus tree written to alignment.co1.cat.fasta.contree
+Reading input trees file alignment.co1.cat.fasta.contree
+Log-likelihood of consensus tree: -15001.355
+
+Analysis results written to: 
+  IQ-TREE report:                alignment.co1.cat.fasta.iqtree
+  Maximum-likelihood tree:       alignment.co1.cat.fasta.treefile
+  Likelihood distances:          alignment.co1.cat.fasta.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          alignment.co1.cat.fasta.splits.nex
+  Consensus tree:                alignment.co1.cat.fasta.contree
+  Screen log file:               alignment.co1.cat.fasta.log
+
+Date and Time: Tue Dec  8 21:23:15 2020
