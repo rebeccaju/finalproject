@@ -7,8 +7,8 @@ output:
   html_document: default
 ---
 
-```{r code, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
 library(tidyverse)
 library(apex)
 library(ape)
@@ -22,7 +22,6 @@ library(geiger)
 syms <- read.csv("data/syms.csv")
 syms_prop <- read.csv("data/syms_prop.csv")
 phy1 <- read.tree("output/phy1")
-clades <- read.csv("data/clades.csv")
 geosyms <- read.csv("data/geosyms.csv")
 ```
 
@@ -89,7 +88,7 @@ At least 10 observations were found for 100 *Scleractinia* species, with the num
 
 Of the 100 study species, 27 were only found to associate with one *Symbiodinium* clade, while 56 were found to associate with 2 clades. 8 and 9 species associated with 3 and 4 clades, respectively. The pie charts in Figure 1 visualize the proportional distribution of *Symbiodinium* clade associations per species. 
 
-```{r, echo = FALSE, fig.width=20, fig.height=20}
+```{r fig1, echo = FALSE, fig.width=20, fig.height=20}
 syms_prop %>%
   ggplot(aes(x = "", y = prop, fill = value), size = 12) +
   geom_bar(stat = "identity", width = 0.5, color = "white") +
@@ -102,7 +101,7 @@ syms_prop %>%
 
 ### Phylogenetic inference
 
-```{r, echo = FALSE, fig.height=30, fig.width=20}
+```{r fig2, echo = FALSE, fig.height=30, fig.width=20}
 plot(phy1) 
 nodelabels(phy1$node.label)
 ```
@@ -110,7 +109,16 @@ nodelabels(phy1$node.label)
 
 Figure 2 shows the rooted phylogenetic tree for all *Scleractinia* species with trait data, generated from IQ-TREE with maximum likelihood support values. The best model fit by Bayesian information criteria (BIC) was TVM+F+I+G4, with a log likelihood value of -15093.3637.
 
-```{r, echo = FALSE, fig.height = 40, fig.width=40}
+```{r, fig.height = 40, fig.width=40}
+tips <- data.frame(tip.label=phy1$tip.label, specie_name=str_replace(phy1$tip.label, "_", " "))
+
+clades <- full_join(tips, filter(syms_prop, specie_name %in% str_replace(phy1$tip.label, "_", " ") == TRUE), by="specie_name") %>%
+  filter(is.na(value) == FALSE) %>%
+  group_by(tip.label, specie_name) %>%
+  dplyr::summarise(value = value) %>%
+  filter(is.na(tip.label) == FALSE) %>% #removing internal nodes
+  pivot_wider(names_from = value)
+
 ggtree(phy1, branch.length = "none") %<+% clades +
   geom_tiplab(fontface = "italic", size = 10, offset = 0.2) +
   geom_tippoint(aes(color=G), size = 8, position = position_dodge(width = 0)) +
@@ -141,7 +149,7 @@ Method | Coding | lambda value |
 3 | # clades associated | 0.399 |
 **Table 2** Pagel's lambda values for various character coding methods. 
 
-The first method of character coding by most-associated clade resulted in a lambda value of 0.733, which shows moderate phylogenetic signal. The second method, in which association with each clade is treated as a separate binary trait, yielded >0.9 lambda values for clades A, B, and C, suggesting strong phylogenetic signal. However, the lambda value for clade D association was 0.414, indicating a low phylogenetic signal. Similarly, the third method considering the number of clades found in association led to a lamda value of 0.399, also showing low phylogenetic signal.
+The first method of character coding by most-associated clade resulted in a lambda value of 0.733, which shows moderate phylogenetic signal. The second method, in which association with each clade is treated as a separate binary trait, yielded >0.9 lambda values for clades A and B, suggesting strong phylogenetic signal. Association with clade C resulted in a 1.000 lambda value — however, as clade C is nearly ubiquitous across the tree due to incomplete sampling, this does not give any information on phylogenetic signal. The lambda value for clade D association was 0.414, indicating a low phylogenetic signal. Similarly, the third method considering the number of clades found in association led to a lamda value of 0.399, also showing low phylogenetic signal.
  
 ## Discussion
 

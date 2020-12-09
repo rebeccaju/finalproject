@@ -94,23 +94,23 @@ and 9 species associated with 3 and 4 clades, respectively. The pie
 charts in Figure 1 visualize the proportional distribution of
 *Symbiodinium* clade associations per species.
 
-![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- --> **Figure 1.**
-Pie charts showing the proportion of observations attributed to each
-*Symbiodinium* clade per *Scleractinia* species.
+![](README_files/figure-gfm/fig1-1.png)<!-- --> **Figure 1.** Pie charts
+showing the proportion of observations attributed to each *Symbiodinium*
+clade per *Scleractinia* species.
 
 ### Phylogenetic inference
 
-![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- --> **Figure 2**
-Rooted phylogenetic tree for *Scleractinia* with ML support values,
-generated with CO1 mitochondrial gene sequences. Only tips with
-*Symbiodinium* clade association data are shown.
+![](README_files/figure-gfm/fig2-1.png)<!-- --> **Figure 2** Rooted
+phylogenetic tree for *Scleractinia* with ML support values, generated
+with CO1 mitochondrial gene sequences. Only tips with *Symbiodinium*
+clade association data are shown.
 
 Figure 2 shows the rooted phylogenetic tree for all *Scleractinia*
 species with trait data, generated from IQ-TREE with maximum likelihood
 support values. The best model fit by Bayesian information criteria
 (BIC) was TVM+F+I+G4, with a log likelihood value of -15093.3637.
 
-![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- --> **Figure 3**
+![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- --> **Figure 3**
 Cladogram of 86 *Scleractinia* species. Colored points at tips
 correspond to observed *Symbiodinium* clade associations.
 
@@ -142,12 +142,14 @@ high phylogenetic signal (Brownian motion model).
 The first method of character coding by most-associated clade resulted
 in a lambda value of 0.733, which shows moderate phylogenetic signal.
 The second method, in which association with each clade is treated as a
-separate binary trait, yielded \>0.9 lambda values for clades A, B, and
-C, suggesting strong phylogenetic signal. However, the lambda value for
-clade D association was 0.414, indicating a low phylogenetic signal.
-Similarly, the third method considering the number of clades found in
-association led to a lamda value of 0.399, also showing low phylogenetic
-signal.
+separate binary trait, yielded \>0.9 lambda values for clades A and B,
+suggesting strong phylogenetic signal. Association with clade C resulted
+in a 1.000 lambda value — however, as clade C is nearly ubiquitous
+across the tree due to incomplete sampling, this does not give any
+information on phylogenetic signal. The lambda value for clade D
+association was 0.414, indicating a low phylogenetic signal. Similarly,
+the third method considering the number of clades found in association
+led to a lamda value of 0.399, also showing low phylogenetic signal.
 
 ## Discussion
 

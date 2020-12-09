@@ -19,18 +19,21 @@ syms <- read.csv("data/ctdb_1.1.0_data.csv") %>%
   group_by(specie_id) %>%
   filter(n() >= 10)
 
-#visualize data (Symbiodinium clades by species)
-ggplot(syms) +
-  geom_bar(aes(x = value, fill = value)) +
-  facet_wrap(~specie_name) +
-  labs(x = 'Symbiodinium clade',
-       y = 'Observations') +
-  scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
-  theme_bw() + theme(panel.border = element_rect(color="black", fill=NA, size=0.75), panel.grid.major = element_blank(),
-                     panel.grid.minor = element_blank(), axis.line = element_blank())
-```
+#write.csv(syms, "data/syms.csv")
 
-![](final_project_files/figure-gfm/data%20clean-1.png)<!-- -->
+#visualize data (Symbiodinium clades by species)
+# p1 <- ggplot(syms) +
+#   geom_bar(aes(x = value, fill = value)) +
+#   facet_wrap(~specie_name) +
+#   labs(x = 'Symbiodinium clade',
+#        y = 'Observations') +
+#   scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
+#   theme_bw() + theme(panel.border = element_rect(color="black", fill=NA, size=0.75), panel.grid.major = element_blank(),
+#                      panel.grid.minor = element_blank(), axis.line = element_blank())
+# p1 
+
+#ggsave("output/sym_clades_bar.pdf", p1, width = 12, height = 9, units = "in")
+```
 
 Six different *Symbiodinium* clades are found within Scleractinia.
 However, we see that clade C is dominant across most species.
@@ -47,16 +50,18 @@ syms_prop <- syms %>%
   count(specie_name, value) %>%
   group_by(specie_name) %>%
   mutate(prop = prop.table(n)) #saves prop table of symbiodinium clade by species
-syms_prop %>%
-  ggplot(aes(x = "", y = prop, fill = value), size = 12) +
-  geom_bar(stat = "identity", width = 0.5, color = "white") +
-  coord_polar("y", start=0) +
-  scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
-  facet_wrap(~specie_name) +
-  theme_void() + theme(legend.position = "bottom")
-```
+#write.csv(syms_prop, "data/syms_prop.csv")
 
-![](final_project_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+# p2 <- syms_prop %>%
+#   ggplot(aes(x = "", y = prop, fill = value), size = 12) +
+#   geom_bar(stat = "identity", width = 0.5, color = "white") +
+#   coord_polar("y", start=0) +
+#   scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
+#   facet_wrap(~specie_name) +
+#   theme_void() + theme(legend.position = "bottom")
+
+#ggsave("output/sym_clades_pie.pdf", p2, width = 20, height = 10, units = "in")
+```
 
 Though this is more visually accessible, the issues with sample
 size/observation bias remain. Going forward, I will treat symbiont clade
@@ -109,23 +114,30 @@ are more commonly available to reduce gaps. Troubleshooting of the
 actual inference may also yield more results.
 
 We can read in the treefile and look at the resulting phylogeny,
-complete with support values from the ML analysis. The log file
-indicates that the best fit model is GTR+F+I+G4, based on BIC.
+complete with support values from the ML analysis. The best fit model is
+TVM+F+I+G4, based on BIC.
 
 ``` r
 #read in cluster output
-phy <- read.tree("cluster/final/alignment.co1.cat.fasta.treefile") 
+phyraw <- read.tree("data/cluster/final/alignment.co1.cat.fasta.treefile") 
+phy <- root(phyraw, "Xestospongia_testudinaria")
 
 #drop tips not in symbiont clade data set
 drops <- phy$tip.label[phy$tip.label %in% str_replace(syms_prop$specie_name, " ", "_") == FALSE]
 phy1 <- drop.tip(phy, drops)
+#write.tree(phy1, "output/phy1")
 
 #plot tree with support values
+#pdf("output/tree_sv.pdf", width = 20, height = 30)
 plot(phy1) 
 nodelabels(phy1$node.label)
 ```
 
 ![](final_project_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+``` r
+#dev.off()
+```
 
 This tree is roughly as expected, as species within the same genus are
 grouped in clades. As the current accepted classification of
@@ -153,9 +165,12 @@ clades <- full_join(tips, filter(syms_prop, specie_name %in% str_replace(phy1$ti
   filter(is.na(tip.label) == FALSE) %>% #removing internal nodes
   pivot_wider(names_from = value)
 
+#write.csv(clades, "data/clades.csv")
+
 #plot cladogram
-ggtree(phy1, branch.length = "none") %<+% clades +
+p3 <- ggtree(phy1, branch.length = "none") %<+% clades +
   geom_tiplab(fontface = "italic", size = 10, offset = 0.2) +
+  geom_tippoint(aes(color=G), size = 8, position = position_dodge(width = 0)) +
   geom_tippoint(aes(color=F), size = 8) +
   geom_tippoint(aes(color=B), size = 8, position = position_dodge(width = 0.75)) +
   geom_tippoint(aes(color=A), size = 8, position = position_dodge(width = 1.5)) +
@@ -164,16 +179,19 @@ ggtree(phy1, branch.length = "none") %<+% clades +
   scale_color_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
   xlim(-2, 35) +  
   theme(legend.position = "bottom")
+p3
 ```
 
 ![](final_project_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
+``` r
+#ggsave("output/tree_sym.pdf", p3, width = 30, height = 40, units = "in")
+```
 
 As clade C is almost ubiquitous, a first glance at this cladogram
 doesn’t reveal that much in terms of phylogenetic conservation.
 However, it does seem that associations with less common clades, such as
 B or A, tend to be shared across sister tips (ex. Orbicella spp.).
-Interestingly, tips that diverged most recently seem to associate with
-fewer clades, suggesting that evolutionary time may be a factor.
 
 ## Geospatial distribution of symbiont clades
 
@@ -188,37 +206,35 @@ Here, I plot each symbiont clade observation onto a world map.
 ``` r
 #read in location data with lat and long
 locs <- read.csv("data/locations.csv") %>%
-  select(location_id, latitude, longitude)
+  dplyr::select(location_id, latitude, longitude)
 
 #combine with symbiont data
 geosyms <- merge(locs, syms, by = "location_id")
+#write.csv(geosyms, "data/geosyms.csv")
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
-ggplot() +
+p4 <- ggplot() +
   geom_sf(data = world) +
   xlab("Longitude") + 
   ylab("Latitude") +
-  geom_point(data = geosyms, aes(x = longitude, y = latitude, color = value), size = 2, alpha = 0.8) +
-  scale_color_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
-  facet_wrap(~value, ncol = 2) +
+  geom_point(data = filter(geosyms, value %in% c("A", "B", "C", "D") == TRUE), aes(x = longitude, y = latitude, color = value), size = 2, alpha = 0.8) +
+  scale_color_manual(breaks = c("C", "B", "A",  "D"), values = c("tomato", "cornflowerblue", "seagreen2", "gold"), name = "Symbiodinium clade") + 
+  facet_wrap(~value, ncol = 1) +
   coord_sf(ylim = c(-50, 50), expand = FALSE) +
   ggtitle("Symbiont clade observations by location") +
   theme(panel.grid.major = element_line(color = gray(.5), linetype = "dashed", size = 0.5), panel.background = element_rect(fill = "aliceblue"))
+p4
 ```
 
 ![](final_project_files/figure-gfm/geo-1.png)<!-- -->
 
-Clades C and D are well distributed, while clades A and B seem
-restricted to the Atlantic/Caribbean. Again, this doesn’t tell us too
-much, as species distribution may also follow these patterns. Further
-analysis can be done by comparing symbiont and host ranges to tease out
-potential geographical influences.
+``` r
+#ggsave("output/geodist_syms.pdf", p4, width = 11, height = 8.5, units = "in")
+```
 
-This analysis currently relies on data visualization to draw
-conclusions. Moving forward, I’d like to apply some statistical methods
-to quantify the relationships between location, phylogenetic relation,
-and symbiont clade association.
+Clades C and D are well distributed, while clades A and B seem
+restricted to the Atlantic/Caribbean.
 
 ## Testing for phylogenetic signal
 
@@ -254,8 +270,8 @@ multi <- clades %>%
     ## GEIGER-fitted comparative model of discrete data
     ##  fitted Q matrix:
     ##               N         Y
-    ##     N -0.589062  0.589062
-    ##     Y  0.589062 -0.589062
+    ##     N -0.589055  0.589055
+    ##     Y  0.589055 -0.589055
     ## 
     ##  fitted 'lambda' model parameter:
     ##  lambda = 1.000000
@@ -268,7 +284,7 @@ multi <- clades %>%
     ## 
     ## Convergence diagnostics:
     ##  optimization iterations = 100
-    ##  failed iterations = 46
+    ##  failed iterations = 39
     ##  number of iterations with same best fit = NA
     ##  frequency of best fit = NA
     ## 
@@ -282,11 +298,11 @@ multi <- clades %>%
     ## GEIGER-fitted comparative model of discrete data
     ##  fitted Q matrix:
     ##               N         Y
-    ##     N -2.621189  2.621189
-    ##     Y  2.621189 -2.621189
+    ##     N -2.621186  2.621186
+    ##     Y  2.621186 -2.621186
     ## 
     ##  fitted 'lambda' model parameter:
-    ##  lambda = 0.413509
+    ##  lambda = 0.413510
     ## 
     ##  model summary:
     ##  log-likelihood = -56.493236
@@ -296,7 +312,7 @@ multi <- clades %>%
     ## 
     ## Convergence diagnostics:
     ##  optimization iterations = 100
-    ##  failed iterations = 63
+    ##  failed iterations = 54
     ##  number of iterations with same best fit = NA
     ##  frequency of best fit = NA
     ## 
@@ -310,11 +326,11 @@ multi <- clades %>%
     ## GEIGER-fitted comparative model of discrete data
     ##  fitted Q matrix:
     ##               N         Y
-    ##     N -2.233241  2.233241
-    ##     Y  2.233241 -2.233241
+    ##     N -2.233243  2.233243
+    ##     Y  2.233243 -2.233243
     ## 
     ##  fitted 'lambda' model parameter:
-    ##  lambda = 0.906706
+    ##  lambda = 0.906707
     ## 
     ##  model summary:
     ##  log-likelihood = -30.358380
@@ -338,8 +354,8 @@ multi <- clades %>%
     ## GEIGER-fitted comparative model of discrete data
     ##  fitted Q matrix:
     ##               N         Y
-    ##     N -15.20539  15.20539
-    ##     Y  15.20539 -15.20539
+    ##     N -15.20467  15.20467
+    ##     Y  15.20467 -15.20467
     ## 
     ##  fitted 'lambda' model parameter:
     ##  lambda = 0.994382
@@ -352,7 +368,7 @@ multi <- clades %>%
     ## 
     ## Convergence diagnostics:
     ##  optimization iterations = 100
-    ##  failed iterations = 59
+    ##  failed iterations = 57
     ##  number of iterations with same best fit = NA
     ##  frequency of best fit = NA
     ## 
@@ -366,8 +382,8 @@ multi <- clades %>%
     ## GEIGER-fitted comparative model of discrete data
     ##  fitted Q matrix:
     ##                 N           Y
-    ##     N -0.03788081  0.03788081
-    ##     Y  0.03788081 -0.03788081
+    ##     N -0.03788073  0.03788073
+    ##     Y  0.03788073 -0.03788073
     ## 
     ##  fitted 'lambda' model parameter:
     ##  lambda = 0.000000
@@ -380,7 +396,7 @@ multi <- clades %>%
     ## 
     ## Convergence diagnostics:
     ##  optimization iterations = 100
-    ##  failed iterations = 50
+    ##  failed iterations = 51
     ##  number of iterations with same best fit = NA
     ##  frequency of best fit = NA
     ## 
@@ -408,7 +424,7 @@ multi <- clades %>%
     ## 
     ## Convergence diagnostics:
     ##  optimization iterations = 100
-    ##  failed iterations = 48
+    ##  failed iterations = 43
     ##  number of iterations with same best fit = NA
     ##  frequency of best fit = NA
     ## 

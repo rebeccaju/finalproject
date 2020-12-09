@@ -38,15 +38,15 @@ syms <- read.csv("data/ctdb_1.1.0_data.csv") %>%
 #write.csv(syms, "data/syms.csv")
 
 #visualize data (Symbiodinium clades by species)
-p1 <- ggplot(syms) +
-  geom_bar(aes(x = value, fill = value)) +
-  facet_wrap(~specie_name) +
-  labs(x = 'Symbiodinium clade',
-       y = 'Observations') +
-  scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
-  theme_bw() + theme(panel.border = element_rect(color="black", fill=NA, size=0.75), panel.grid.major = element_blank(),
-                     panel.grid.minor = element_blank(), axis.line = element_blank())
-p1 
+# p1 <- ggplot(syms) +
+#   geom_bar(aes(x = value, fill = value)) +
+#   facet_wrap(~specie_name) +
+#   labs(x = 'Symbiodinium clade',
+#        y = 'Observations') +
+#   scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
+#   theme_bw() + theme(panel.border = element_rect(color="black", fill=NA, size=0.75), panel.grid.major = element_blank(),
+#                      panel.grid.minor = element_blank(), axis.line = element_blank())
+# p1 
 
 #ggsave("output/sym_clades_bar.pdf", p1, width = 12, height = 9, units = "in")
 ```
@@ -63,13 +63,13 @@ syms_prop <- syms %>%
   mutate(prop = prop.table(n)) #saves prop table of symbiodinium clade by species
 #write.csv(syms_prop, "data/syms_prop.csv")
 
-p2 <- syms_prop %>%
-  ggplot(aes(x = "", y = prop, fill = value), size = 12) +
-  geom_bar(stat = "identity", width = 0.5, color = "white") +
-  coord_polar("y", start=0) +
-  scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
-  facet_wrap(~specie_name) +
-  theme_void() + theme(legend.position = "bottom")
+# p2 <- syms_prop %>%
+#   ggplot(aes(x = "", y = prop, fill = value), size = 12) +
+#   geom_bar(stat = "identity", width = 0.5, color = "white") +
+#   coord_polar("y", start=0) +
+#   scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
+#   facet_wrap(~specie_name) +
+#   theme_void() + theme(legend.position = "bottom")
 
 #ggsave("output/sym_clades_pie.pdf", p2, width = 20, height = 10, units = "in")
 ```
@@ -99,10 +99,10 @@ Sequences were gathered and aligned with the NCBI blast tool. The headings of th
 
 Sequences were concatenated using the 'apex' R package.
 
-```{r, echo = FALSE}
-rawseqs <- read.multiFASTA("cluster/final/alignment.co1.fasta")[-1]
+```{r, eval = FALSE, echo = FALSE}
+rawseqs <- read.multiFASTA("data/cluster/final/alignment.co1.fasta")[-1]
 seqs <- concatenate(rawseqs)
-write.dna(seqs, file = "cluster/final/alignment.co1.cat.fasta", format = "fasta")
+write.dna(seqs, file = "data/cluster/final/alignment.co1.cat.fasta", format = "fasta")
 ```
 
 
@@ -179,7 +179,7 @@ p3 <- ggtree(phy1, branch.length = "none") %<+% clades +
   scale_color_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
   xlim(-2, 35) +  
   theme(legend.position = "bottom")
-
+p3
 #ggsave("output/tree_sym.pdf", p3, width = 30, height = 40, units = "in")
 ```
 
