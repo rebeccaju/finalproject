@@ -5,17 +5,19 @@ R Ju
 
 ## Data collection
 
-To begin, I will compile a list of known Symbiodinium clade associations
-for all Scleractinia species [coraltraits.org](coraltraits.org). Data
-downloaded from this site also includes the geographic location of the
-sample, as well as methodology used. These factors may be useful in
-comparative analyses.
+To begin, I will compile a list of known *Symbiodinium* clade
+associations for all *Scleractinia* species
+[coraltraits.org](coraltraits.org). Data downloaded from this site also
+includes the geographic location of the sample, as well as methodology
+used. These factors may be useful in comparative analyses.
 
 ``` r
 #load in coraltraits.org data
 syms <- read.csv("data/ctdb_1.1.0_data.csv") %>%
   filter(trait_name == "Symbiodinium clade") %>%
-  select(specie_id, specie_name, location_id, location_name, trait_id, trait_name, methodology_id, methodology_name, value)
+  select(specie_id, specie_name, location_id, location_name, trait_id, trait_name, methodology_id, methodology_name, value) %>%
+  group_by(specie_id) %>%
+  filter(n() >= 10)
 
 #visualize data (Symbiodinium clades by species)
 ggplot(syms) +
@@ -50,8 +52,8 @@ syms_prop %>%
   geom_bar(stat = "identity", width = 0.5, color = "white") +
   coord_polar("y", start=0) +
   scale_fill_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") +
-  facet_wrap(~specie_name) +
-  theme_void()
+  facet_wrap(~specie_name, ncol = 20) +
+  theme_void() + theme(legend.position = "bottom", text = element_text(size = 4))
 ```
 
 ![](final_project_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
@@ -76,7 +78,7 @@ Sequences were gathered and aligned with the NCBI blast tool. The
 headings of the downloaded sequences were modified using the following
 sed command:
 
-    sed -E 's/>[a-zA-Z]+\|([a-zA-Z_?0-9\.]+)\|.+\[organism=([a-zA-Z0-9]+)( [a-zA-Z0-9]+\. | )([a-zA-Z0-9]+).+?/>\2_\4/g' alignment.raw.fasta > alignment.fasta
+    sed -E 's/>[a-zA-Z]+\|([a-zA-Z_?0-9\.]+)\|.+\[organism=([a-zA-Z0-9]+)( [a-zA-Z0-9]+\. | )([a-zA-Z0-9]+).+?/>\2_\4/g' alignment.co1.raw.fasta > alignment.co1.fasta
 
 Whole mitochondrial genome sequences were chosen when available.
 However, some species only have shorter mitochondrial sequences (12S,
@@ -99,7 +101,7 @@ Job script:
     
     module load IQ-TREE/1.6.12
     
-    iqtree -s alignment.cat.fasta -bb 1000 -nt AUTOn
+    iqtree -s alignment.co1.cat.fasta -bb 1000 -nt AUTOn
 
 The IQ-TREE composition chi-test fails for 101 species. This may be
 addressed by using fewer genes (just COI and CYTB, for example) which
@@ -112,7 +114,7 @@ indicates that the best fit model is GTR+F+I+G4, based on BIC.
 
 ``` r
 #read in cluster output
-phy <- read.tree("cluster/final/alignment.cat.fasta.treefile") 
+phy <- read.tree("cluster/alignment.co1.cat.fasta.treefile") 
 
 #drop tips not in symbiont clade data set
 drops <- phy$tip.label[phy$tip.label %in% str_replace(syms_prop$specie_name, " ", "_") == FALSE]
@@ -142,9 +144,9 @@ points along the tips.
 
 ``` r
 #create data set with symb clade and tip labels
-tips <- data.frame(tip.label=phy$tip.label, specie_name=str_replace(phy$tip.label, "_", " "))
+tips <- data.frame(tip.label=phy1$tip.label, specie_name=str_replace(phy1$tip.label, "_", " "))
 
-symbs <- full_join(tips, syms_prop, by="specie_name") %>%
+symbs <- full_join(tips, filter(syms_prop, specie_name %in% str_replace(phy1$tip.label, "_", " ") == TRUE), by="specie_name") %>%
   filter(is.na(value) == FALSE) %>%
   group_by(tip.label) %>%
   dplyr::summarise(value = value) %>%
@@ -152,14 +154,14 @@ symbs <- full_join(tips, syms_prop, by="specie_name") %>%
   pivot_wider(names_from = value)
 
 #plot cladogram
-ggtree(phy1, branch.length = "none", size = 1) %<+% symbs +
+ggtree(phy1, branch.length = "none") %<+% symbs +
   geom_tiplab(fontface = "italic", size = 10, offset = 0.2) +
   geom_tippoint(aes(color=F), size = 8) +
   geom_tippoint(aes(color=B), size = 8, position = position_dodge(width = 0.75)) +
   geom_tippoint(aes(color=A), size = 8, position = position_dodge(width = 1.5)) +
   geom_tippoint(aes(color=D), size = 8, position = position_dodge(width = 2.25)) +
   geom_tippoint(aes(color=C), size = 8, position = position_dodge(width = 3)) +
-  scale_color_manual(breaks = c("C", "B", "A",  "D", "F"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink"), name = "Symbiodinium clade") + 
+  scale_color_manual(breaks = c("C", "B", "A",  "D", "F", "G"), values = c("tomato", "cornflowerblue", "seagreen2", "gold", "lightpink", "burlywood"), name = "Symbiodinium clade") + 
   xlim(-2, 40) +  
   theme(legend.position = "bottom")
 ```
@@ -169,7 +171,7 @@ ggtree(phy1, branch.length = "none", size = 1) %<+% symbs +
 As clade C is almost ubiquitous, a first glance at this cladogram
 doesn’t reveal that much in terms of phylogenetic conservation.
 However, it does seem that associations with less common clades, such as
-B or A, tend to be shared across sister tips (ex. Agaricia spp.).
+B or A, tend to be shared across sister tips (ex. Orbicella spp.).
 Interestingly, tips that diverged most recently seem to associate with
 fewer clades, suggesting that evolutionary time may be a factor.
 
@@ -206,6 +208,19 @@ ggplot() +
 ```
 
 ![](final_project_files/figure-gfm/geo-1.png)<!-- -->
+
+``` r
+# 
+# traits <- syms %>%
+#   select(specie_name, value) %>%
+#   mutate(trait = recode(value, "A" = 1, "B" = 2, "C" = 3, "D" = 4, "F" = 5, "G" = 6)) %>%
+#   group_by(specie_name) %>%
+#   summarise(trait = mean(trait))
+# 
+# ord <- factor((traits$specie_name), levels=phy$tip.label)
+# 
+# tmp=fitDiscrete(phy, traits, model="ER", control=list(niter=5), ncores=2) #-7.119792
+```
 
 Clades C and D are well distributed, while clades A and B seem
 restricted to the Atlantic/Caribbean. Again, this doesn’t tell us too
